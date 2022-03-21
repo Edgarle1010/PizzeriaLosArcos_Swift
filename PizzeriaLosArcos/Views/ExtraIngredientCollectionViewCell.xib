@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="extraIngredientCell" id="gTV-IL-0wX" customClass="ExtraIngredientCollectionViewCell" customModule="PizzeriaLosArcos" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="187" height="66"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="187" height="66"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WMC-PO-vry">
+                        <rect key="frame" x="0.0" y="0.0" width="187" height="66"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYg-Ab-YRa">
+                                <rect key="frame" x="167" y="5" width="10" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="10" id="Fyq-Ra-63j"/>
+                                    <constraint firstAttribute="height" constant="10" id="XVQ-H9-aZM"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="cancel"/>
+                                <connections>
+                                    <action selector="removeExtraIngredientPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="P16-p6-Jo3"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peperoni $8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enZ-zb-pvh">
+                                <rect key="frame" x="10" y="24" width="147" height="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" name="primaryColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="thirdColor"/>
+                        <constraints>
+                            <constraint firstItem="enZ-zb-pvh" firstAttribute="centerY" secondItem="WMC-PO-vry" secondAttribute="centerY" id="Bg7-Cm-Pxy"/>
+                            <constraint firstAttribute="trailing" secondItem="YYg-Ab-YRa" secondAttribute="trailing" constant="10" id="Ob7-3X-R6q"/>
+                            <constraint firstItem="enZ-zb-pvh" firstAttribute="leading" secondItem="WMC-PO-vry" secondAttribute="leading" constant="10" id="e0D-I9-6Ft"/>
+                            <constraint firstItem="YYg-Ab-YRa" firstAttribute="top" secondItem="WMC-PO-vry" secondAttribute="top" constant="5" id="o7P-hp-c7c"/>
+                            <constraint firstItem="YYg-Ab-YRa" firstAttribute="leading" secondItem="enZ-zb-pvh" secondAttribute="trailing" constant="10" id="vUa-Cq-hBE"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="WMC-PO-vry" secondAttribute="bottom" id="ZQZ-yc-Yd2"/>
+                <constraint firstItem="WMC-PO-vry" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="emY-6p-SXs"/>
+                <constraint firstItem="WMC-PO-vry" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fLv-7F-IJ7"/>
+                <constraint firstAttribute="trailing" secondItem="WMC-PO-vry" secondAttribute="trailing" id="uDH-Oj-xGh"/>
+            </constraints>
+            <size key="customSize" width="187" height="66"/>
+            <connections>
+                <outlet property="cancelButton" destination="YYg-Ab-YRa" id="cIU-fo-5Im"/>
+                <outlet property="cellView" destination="WMC-PO-vry" id="PbM-UJ-KVH"/>
+                <outlet property="titleLabel" destination="enZ-zb-pvh" id="CyT-b5-DiU"/>
+            </connections>
+            <point key="canvasLocation" x="154.34782608695653" y="100.44642857142857"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="cancel" width="25" height="25"/>
+        <namedColor name="primaryColor">
+            <color red="0.76499998569488525" green="0.41600000858306885" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="thirdColor">
+            <color red="0.9179999828338623" green="0.86299997568130493" blue="0.65100002288818359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
