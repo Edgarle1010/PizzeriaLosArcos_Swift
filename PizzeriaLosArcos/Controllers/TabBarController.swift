@@ -9,6 +9,8 @@ import UIKit
 import RealmSwift
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
+    @IBOutlet weak var historyButton: UIBarButtonItem!
+    
     var notificationToken: NotificationToken?
     var itemList: Results<Item>?
     let realm = try! Realm()
@@ -19,6 +21,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         
         self.navigationItem.title = K.Titles.menu
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
         
         itemList = realm.objects(Item.self)
         
@@ -62,10 +66,16 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             switch currentVC {
             case K.ViewControllers.menuViewController:
                 self.navigationItem.title = K.Titles.menu
+                self.navigationItem.rightBarButtonItem?.isEnabled = false
+                self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
             case K.ViewControllers.shoppingCarViewController:
                 self.navigationItem.title = K.Titles.shoppingCar
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+                self.navigationItem.rightBarButtonItem?.tintColor = UIColor.init(named: K.BrandColors.primaryColor)
             case K.ViewControllers.moreViewController:
                 self.navigationItem.title = K.Titles.more
+                self.navigationItem.rightBarButtonItem?.isEnabled = false
+                self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clear
             default:
                 break;
             }

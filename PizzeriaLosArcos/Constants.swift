@@ -135,6 +135,7 @@ struct K {
         static let status = "status"
         
         static let ordersCollection = "orders"
+        static let client = "client"
         
     }
     
@@ -183,5 +184,7 @@ struct K {
         static let extraIngredientCell = "extraIngredientCell"
         static let itemTableViewCell = "ItemTableViewCell"
         static let itemCell = "itemCell"
+        static let orderTebleViewCell = "OrderTableViewCell"
+        static let orderCell = "orderCell"
     }
 }

@@ -1104,6 +1104,83 @@
             </objects>
             <point key="canvasLocation" x="4121.739130434783" y="105.80357142857143"/>
         </scene>
+        <!--Orders In Process View Controller-->
+        <scene sceneID="jWQ-yq-UVg">
+            <objects>
+                <viewController id="9bG-3O-HhM" customClass="OrdersInProcessViewController" customModule="PizzeriaLosArcos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lhv-CH-154">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yU9-xX-wbm" userLabel="navigationView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ordenes en proceso" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="uqC-cD-yHn">
+                                        <rect key="frame" x="115.5" y="13.5" width="183.5" height="23"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmm-er-giS">
+                                        <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="0c3-Kv-fo7"/>
+                                            <constraint firstAttribute="width" constant="20" id="FMz-Bz-3Aq"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="back"/>
+                                        <connections>
+                                            <action selector="backPressed:" destination="1N1-E8-qx4" eventType="touchUpInside" id="27U-jb-d26"/>
+                                            <action selector="backPressed:" destination="JGw-ue-bFs" eventType="touchUpInside" id="BvT-Li-OO1"/>
+                                            <action selector="backPressed:" destination="9bG-3O-HhM" eventType="touchUpInside" id="KCP-aG-zle"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="thirdColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HNY-NU-qQy"/>
+                                    <constraint firstItem="Jmm-er-giS" firstAttribute="top" secondItem="yU9-xX-wbm" secondAttribute="top" constant="15" id="Ns4-Oz-Niz"/>
+                                    <constraint firstAttribute="bottom" secondItem="Jmm-er-giS" secondAttribute="bottom" constant="15" id="RRn-cc-fVv"/>
+                                    <constraint firstItem="Jmm-er-giS" firstAttribute="leading" secondItem="yU9-xX-wbm" secondAttribute="leading" constant="15" id="U8D-5o-Eew"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="dC5-Xa-PnN"/>
+                                    <constraint firstItem="uqC-cD-yHn" firstAttribute="centerY" secondItem="yU9-xX-wbm" secondAttribute="centerY" id="gNa-oc-Fs1"/>
+                                    <constraint firstItem="uqC-cD-yHn" firstAttribute="centerX" secondItem="yU9-xX-wbm" secondAttribute="centerX" id="wdP-rx-14F"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1dn-rc-vX5">
+                                <rect key="frame" x="0.0" y="50" width="414" height="792"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9bG-3O-HhM" id="QcQ-Ej-ZOl"/>
+                                    <outlet property="delegate" destination="9bG-3O-HhM" id="OGW-4q-V0u"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="opi-XS-ZQC"/>
+                        <color key="backgroundColor" name="quarterColor"/>
+                        <constraints>
+                            <constraint firstItem="1dn-rc-vX5" firstAttribute="leading" secondItem="opi-XS-ZQC" secondAttribute="leading" id="3ly-bd-Byu"/>
+                            <constraint firstItem="yU9-xX-wbm" firstAttribute="top" secondItem="lhv-CH-154" secondAttribute="top" id="584-bZ-dgG"/>
+                            <constraint firstItem="yU9-xX-wbm" firstAttribute="leading" secondItem="opi-XS-ZQC" secondAttribute="leading" id="8B3-qc-gRo"/>
+                            <constraint firstItem="opi-XS-ZQC" firstAttribute="bottom" secondItem="1dn-rc-vX5" secondAttribute="bottom" id="9WH-1K-y5E"/>
+                            <constraint firstItem="1dn-rc-vX5" firstAttribute="top" secondItem="yU9-xX-wbm" secondAttribute="bottom" id="NgS-sc-W7g"/>
+                            <constraint firstItem="yU9-xX-wbm" firstAttribute="top" secondItem="lhv-CH-154" secondAttribute="top" id="Qr3-ns-uaO"/>
+                            <constraint firstItem="yU9-xX-wbm" firstAttribute="trailing" secondItem="opi-XS-ZQC" secondAttribute="trailing" id="SH5-e6-PwU"/>
+                            <constraint firstItem="opi-XS-ZQC" firstAttribute="trailing" secondItem="1dn-rc-vX5" secondAttribute="trailing" id="XJz-Mb-bNw"/>
+                            <constraint firstItem="yU9-xX-wbm" firstAttribute="leading" secondItem="opi-XS-ZQC" secondAttribute="leading" id="lm8-Dm-nd2"/>
+                            <constraint firstItem="yU9-xX-wbm" firstAttribute="trailing" secondItem="opi-XS-ZQC" secondAttribute="trailing" id="no8-3J-Mwk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="Jmm-er-giS" id="VgO-4a-2py"/>
+                        <outlet property="tableView" destination="1dn-rc-vX5" id="Us0-Eg-91y"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nZe-ks-Rlx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3212" y="-605"/>
+        </scene>
         <!--Menú-->
         <scene sceneID="ug5-UO-g6u">
             <objects>
@@ -2825,7 +2902,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Wbd-4u-V1p"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Guardar">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3159,7 +3236,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="mPM-f6-rRU"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Guardar">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3230,8 +3307,11 @@
                 <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Lpo-kh-xmT" customClass="TabBarController" customModule="PizzeriaLosArcos" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="57U-pX-0fu">
-                        <barButtonItem key="rightBarButtonItem" title="history" image="history" id="zwh-Nb-a9q">
+                        <barButtonItem key="rightBarButtonItem" title="history" image="history_icon" id="zwh-Nb-a9q">
                             <color key="tintColor" name="primaryColor"/>
+                            <connections>
+                                <segue destination="9bG-3O-HhM" kind="presentation" id="yz8-Qc-Lex"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gVB-yO-uTV">
@@ -3240,6 +3320,7 @@
                         <color key="selectedImageTintColor" name="primaryColor"/>
                     </tabBar>
                     <connections>
+                        <outlet property="historyButton" destination="zwh-Nb-a9q" id="Yal-6Q-g81"/>
                         <segue destination="bLW-b7-aPj" kind="relationship" relationship="viewControllers" id="jFm-vX-Snf"/>
                         <segue destination="fjM-13-6Ld" kind="relationship" relationship="viewControllers" id="aje-BY-eN2"/>
                         <segue destination="4DO-67-Pfa" kind="relationship" relationship="viewControllers" id="xDK-O0-2yT"/>
@@ -3264,7 +3345,8 @@
         <image name="email" width="25" height="25"/>
         <image name="ensaladas-menu" width="2245" height="1890"/>
         <image name="hamburguesas-menu" width="2245" height="1890"/>
-        <image name="history" width="25" height="25"/>
+        <image name="history" width="512" height="512"/>
+        <image name="history_icon" width="25" height="25"/>
         <image name="info" width="25" height="25"/>
         <image name="kids-menu" width="4182" height="1772"/>
         <image name="lock" width="25" height="25"/>

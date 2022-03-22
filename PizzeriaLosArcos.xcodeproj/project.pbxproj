@@ -44,6 +44,9 @@
 		B3D465DE278A3865000DA775 /* ShoppingCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D465DD278A3865000DA775 /* ShoppingCarViewController.swift */; };
 		B3D465E0278A3897000DA775 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D465DF278A3897000DA775 /* MoreViewController.swift */; };
 		B3D465E2278A92F4000DA775 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D465E1278A92F4000DA775 /* Constants.swift */; };
+		B3DD370A27E97C3000AF4615 /* OrdersInProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD370927E97C3000AF4615 /* OrdersInProcessViewController.swift */; };
+		B3DD370D27E97D8F00AF4615 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DD370B27E97D8F00AF4615 /* OrderTableViewCell.swift */; };
+		B3DD370F27E990C800AF4615 /* OrderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3DD370C27E97D8F00AF4615 /* OrderTableViewCell.xib */; };
 		B3E4B5B62796707F0031D940 /* ExtraIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4B5B52796707F0031D940 /* ExtraIngredient.swift */; };
 		B3E4B5B8279681C50031D940 /* ExtraIngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E4B5B7279681C50031D940 /* ExtraIngredientViewController.swift */; };
 		B3E661C5278B89EA00EFC52A /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3E661C4278B89EA00EFC52A /* SigninViewController.swift */; };
@@ -96,6 +99,9 @@
 		B3D465DD278A3865000DA775 /* ShoppingCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCarViewController.swift; sourceTree = "<group>"; };
 		B3D465DF278A3897000DA775 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		B3D465E1278A92F4000DA775 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B3DD370927E97C3000AF4615 /* OrdersInProcessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersInProcessViewController.swift; sourceTree = "<group>"; };
+		B3DD370B27E97D8F00AF4615 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
+		B3DD370C27E97D8F00AF4615 /* OrderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderTableViewCell.xib; sourceTree = "<group>"; };
 		B3E4B5B52796707F0031D940 /* ExtraIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraIngredient.swift; sourceTree = "<group>"; };
 		B3E4B5B7279681C50031D940 /* ExtraIngredientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraIngredientViewController.swift; sourceTree = "<group>"; };
 		B3E661C4278B89EA00EFC52A /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +194,8 @@
 				B3B82F0C2797D7DE00B04C20 /* ExtraIngredientCollectionViewCell.xib */,
 				B330BA8D279BD13D002EA7E4 /* ItemTableViewCell.swift */,
 				B330BA8E279BD13D002EA7E4 /* ItemTableViewCell.xib */,
+				B3DD370B27E97D8F00AF4615 /* OrderTableViewCell.swift */,
+				B3DD370C27E97D8F00AF4615 /* OrderTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,6 +225,7 @@
 				B326E1D827B9DA2300BF9493 /* EditUserNameViewController.swift */,
 				B326E1DA27BA0F6900BF9493 /* ChangePasswordViewController.swift */,
 				B3C960E827C607BA0005EE23 /* AboutViewController.swift */,
+				B3DD370927E97C3000AF4615 /* OrdersInProcessViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -295,6 +304,7 @@
 				B34A5D6B277D603F00EC8D3A /* Assets.xcassets in Resources */,
 				B302D60C278EAC72002EAEA2 /* FoodCollectionViewCell.xib in Resources */,
 				B330BA90279BD13D002EA7E4 /* ItemTableViewCell.xib in Resources */,
+				B3DD370F27E990C800AF4615 /* OrderTableViewCell.xib in Resources */,
 				B34A5D69277D603D00EC8D3A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,6 +370,7 @@
 				B302D606278EA0DD002EAEA2 /* FoodListViewController.swift in Sources */,
 				B31D76D2278BE981001EEC92 /* TabBarController.swift in Sources */,
 				B3F05EB027B77F0800DE59A3 /* UserInformationViewController.swift in Sources */,
+				B3DD370D27E97D8F00AF4615 /* OrderTableViewCell.swift in Sources */,
 				B34A5D66277D603D00EC8D3A /* WelcomeViewController.swift in Sources */,
 				B31D76D0278BE76E001EEC92 /* AppManager.swift in Sources */,
 				B3B82F0A2797CA4E00B04C20 /* AmountViewController.swift in Sources */,
@@ -380,6 +391,7 @@
 				B3E4B5B8279681C50031D940 /* ExtraIngredientViewController.swift in Sources */,
 				B342F30B2787CD87004BC31D /* LoginViewController.swift in Sources */,
 				B3A4DE8827E19E5E00CF47E7 /* Order.swift in Sources */,
+				B3DD370A27E97C3000AF4615 /* OrdersInProcessViewController.swift in Sources */,
 				B3C848792791282400A3FC5A /* Food.swift in Sources */,
 				B3E4B5B62796707F0031D940 /* ExtraIngredient.swift in Sources */,
 				B342F3092787CBED004BC31D /* Util.swift in Sources */,
