@@ -3307,11 +3307,29 @@
                 <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Lpo-kh-xmT" customClass="TabBarController" customModule="PizzeriaLosArcos" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="57U-pX-0fu">
-                        <barButtonItem key="rightBarButtonItem" title="history" image="history_icon" id="zwh-Nb-a9q">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="4RS-uf-RuR">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="4VN-y3-WFc">
+                                <rect key="frame" x="20" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="notifications"/>
+                                <connections>
+                                    <action selector="notificationsButtonPressed:" destination="Lpo-kh-xmT" eventType="touchUpInside" id="Kl3-iq-sEx"/>
+                                </connections>
+                            </button>
                             <color key="tintColor" name="primaryColor"/>
-                            <connections>
-                                <segue destination="9bG-3O-HhM" kind="presentation" id="yz8-Qc-Lex"/>
-                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" id="GkX-8d-13T">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="cOC-UV-f8q">
+                                <rect key="frame" x="345" y="0.0" width="49" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="history_icon"/>
+                                <connections>
+                                    <segue destination="9bG-3O-HhM" kind="presentation" id="QLN-Sc-Urv"/>
+                                </connections>
+                            </button>
+                            <color key="tintColor" name="primaryColor"/>
                         </barButtonItem>
                     </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gVB-yO-uTV">
@@ -3320,7 +3338,8 @@
                         <color key="selectedImageTintColor" name="primaryColor"/>
                     </tabBar>
                     <connections>
-                        <outlet property="historyButton" destination="zwh-Nb-a9q" id="Yal-6Q-g81"/>
+                        <outlet property="notificationsButton" destination="4VN-y3-WFc" id="8rD-Rx-gtR"/>
+                        <outlet property="ordersInProccessButton" destination="cOC-UV-f8q" id="8da-rx-1id"/>
                         <segue destination="bLW-b7-aPj" kind="relationship" relationship="viewControllers" id="jFm-vX-Snf"/>
                         <segue destination="fjM-13-6Ld" kind="relationship" relationship="viewControllers" id="aje-BY-eN2"/>
                         <segue destination="4DO-67-Pfa" kind="relationship" relationship="viewControllers" id="xDK-O0-2yT"/>
@@ -3357,6 +3376,7 @@
         <image name="more" width="25" height="25"/>
         <image name="next" width="512" height="512"/>
         <image name="nieves_malteadas-menu" width="2245" height="1890"/>
+        <image name="notifications" width="25" height="25"/>
         <image name="phone" width="25" height="25"/>
         <image name="pizzas-menu" width="4182" height="1772"/>
         <image name="platillos-menu" width="2245" height="1890"/>

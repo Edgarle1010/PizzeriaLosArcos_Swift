@@ -48,6 +48,7 @@ class ShoppingCarViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         loadItems()
+        self.locationManager.requestLocation()
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {
@@ -69,12 +70,11 @@ class ShoppingCarViewController: UIViewController {
                                         } else {
                                             self.getOrderID { folio in
                                                 if let user = Auth.auth().currentUser {
-                                                    self.locationManager.requestLocation()
                                                     
                                                     let itemList = List<Item>()
                                                     itemList.append(objectsIn: self.realm.objects(Item.self))
                                                     
-                                                    let order = Order(folio: folio, client: user.phoneNumber!, clientName: user.displayName!, complete: false, status: "Pedido", date: Date().timeIntervalSince1970, location: self.currUserLocation ?? "Ubicación no proporcionada", totalPrice: self.totalSum!, items: self.items!.count, itemList: itemList)
+                                                    let order = Order(folio: folio, client: user.phoneNumber!, clientName: user.displayName!, complete: false, status: "Pedido", dateRequest: Date().timeIntervalSince1970, dateProcessed: 0.0, dateFinished: 0.0, dateDelivered: 0.0, location: self.currUserLocation ?? "Ubicación no proporcionada", totalPrice: self.totalSum!, items: self.items!.count, itemList: itemList)
                                                     
                                                     self.addOrder(order, folio, waitTime)
                                                 }

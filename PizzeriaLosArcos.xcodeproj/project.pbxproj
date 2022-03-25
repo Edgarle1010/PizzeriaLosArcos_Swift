@@ -31,6 +31,7 @@
 		B34A5D6B277D603F00EC8D3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B34A5D6A277D603F00EC8D3A /* Assets.xcassets */; };
 		B34A5D6E277D603F00EC8D3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B34A5D6C277D603F00EC8D3A /* LaunchScreen.storyboard */; };
 		B34A5D79277D623000EC8D3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B34A5D78277D623000EC8D3A /* GoogleService-Info.plist */; };
+		B35BC1B527ED858C00E4B766 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BC1B427ED858C00E4B766 /* PushNotificationManager.swift */; };
 		B369792C27E83F3800E09B80 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B369792B27E83F3800E09B80 /* Reachability.swift */; };
 		B3A4DE8827E19E5E00CF47E7 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4DE8727E19E5E00CF47E7 /* Order.swift */; };
 		B3B82F0A2797CA4E00B04C20 /* AmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B82F092797CA4E00B04C20 /* AmountViewController.swift */; };
@@ -65,6 +66,7 @@
 		B302D609278EAC72002EAEA2 /* FoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		B302D60A278EAC72002EAEA2 /* FoodCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FoodCollectionViewCell.xib; sourceTree = "<group>"; };
 		B30CE524279A77F0005AD2EA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		B310E67827ED7447008F1C64 /* PizzeriaLosArcos.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PizzeriaLosArcos.entitlements; sourceTree = "<group>"; };
 		B31AC922279287E700A0200B /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
 		B31D76CF278BE76E001EEC92 /* AppManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		B31D76D1278BE981001EEC92 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		B34A5D6D277D603F00EC8D3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B34A5D6F277D603F00EC8D3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B34A5D78277D623000EC8D3A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B35BC1B427ED858C00E4B766 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		B369792B27E83F3800E09B80 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		B3A4DE8727E19E5E00CF47E7 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		B3B82F092797CA4E00B04C20 /* AmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountViewController.swift; sourceTree = "<group>"; };
@@ -154,10 +157,14 @@
 		B34A5D60277D603D00EC8D3A /* PizzeriaLosArcos */ = {
 			isa = PBXGroup;
 			children = (
+				B310E67827ED7447008F1C64 /* PizzeriaLosArcos.entitlements */,
 				B342F3082787CBED004BC31D /* Util.swift */,
 				B34A5D61277D603D00EC8D3A /* AppDelegate.swift */,
 				B34A5D63277D603D00EC8D3A /* SceneDelegate.swift */,
 				B31D76CF278BE76E001EEC92 /* AppManager.swift */,
+				B369792B27E83F3800E09B80 /* Reachability.swift */,
+				B33C9E6627C8AC9B0058225D /* OpenMapDirections.swift */,
+				B35BC1B427ED858C00E4B766 /* PushNotificationManager.swift */,
 				B34A5D75277D60B800EC8D3A /* Models */,
 				B34A5D76277D60BF00EC8D3A /* Views */,
 				B34A5D77277D60D300EC8D3A /* Controllers */,
@@ -166,8 +173,6 @@
 				B34A5D6F277D603F00EC8D3A /* Info.plist */,
 				B34A5D78277D623000EC8D3A /* GoogleService-Info.plist */,
 				B3D465E1278A92F4000DA775 /* Constants.swift */,
-				B33C9E6627C8AC9B0058225D /* OpenMapDirections.swift */,
-				B369792B27E83F3800E09B80 /* Reachability.swift */,
 			);
 			path = PizzeriaLosArcos;
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 				B31D76D0278BE76E001EEC92 /* AppManager.swift in Sources */,
 				B3B82F0A2797CA4E00B04C20 /* AmountViewController.swift in Sources */,
 				B369792C27E83F3800E09B80 /* Reachability.swift in Sources */,
+				B35BC1B527ED858C00E4B766 /* PushNotificationManager.swift in Sources */,
 				B34A5D62277D603D00EC8D3A /* AppDelegate.swift in Sources */,
 				B3B82F0D2797D7DE00B04C20 /* ExtraIngredientCollectionViewCell.swift in Sources */,
 				B31AC923279287E700A0200B /* OrderDetailsViewController.swift in Sources */,
@@ -544,12 +550,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PizzeriaLosArcos/PizzeriaLosArcos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PSBA95AV5R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PizzeriaLosArcos/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Pizzería Los Arcos";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to get the current position.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -577,12 +585,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PizzeriaLosArcos/PizzeriaLosArcos.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PSBA95AV5R;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PizzeriaLosArcos/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Pizzería Los Arcos";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to get the current position.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

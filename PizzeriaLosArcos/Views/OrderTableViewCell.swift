@@ -14,6 +14,7 @@ class OrderTableViewCell: UITableViewCell {
     @IBOutlet weak var timeRequest: UILabel!
     @IBOutlet weak var timeProcessed: UILabel!
     @IBOutlet weak var timeFinished: UILabel!
+    @IBOutlet weak var timeDelivered: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var timeStimatedCompletion: UILabel!
     

@@ -30,14 +30,12 @@ class OrdersInProcessViewController: UIViewController {
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.allowsSelection = false
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+        
         ProgressHUD.show()
         if let user = Auth.auth().currentUser?.phoneNumber {
             db.collection(K.Firebase.ordersCollection)
                 .whereField(K.Firebase.client, isEqualTo: user)
-                .getDocuments { querySnapshot, error in
+                .addSnapshotListener { querySnapshot, error in
                     ProgressHUD.dismiss()
                     self.ordersList = []
                     if let error = error {
@@ -50,7 +48,9 @@ class OrdersInProcessViewController: UIViewController {
                                 }
                                 switch result {
                                 case .success(let order):
-                                    self.ordersList.append(order)
+                                    if !order.complete {
+                                        self.ordersList.append(order)
+                                    }
                                 case .failure(let error):
                                     print("Error decoding food: \(error)")
                                 }
@@ -64,6 +64,10 @@ class OrdersInProcessViewController: UIViewController {
                 }
                 
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
     
     @IBAction func backPressed(_ sender: UIButton) {
@@ -94,6 +98,44 @@ extension OrdersInProcessViewController: UITableViewDelegate, UITableViewDataSou
         
         cell.folioLabel.text = currOrder.folio
         cell.priceLabel.text = "$\(currOrder.totalPrice)"
+        
+        let timeRequest = currOrder.dateRequest
+        let timeProcessed = currOrder.dateProcessed ?? 0.0
+        let timeFinished = currOrder.dateFinished ?? 0.0
+        let timeDelivered = currOrder.dateDelivered ?? 0.0
+        
+        let dateRequest = Date(timeIntervalSince1970: timeRequest)
+        let dateProcessed = Date(timeIntervalSince1970: timeProcessed)
+        let dateFinished = Date(timeIntervalSince1970: timeFinished)
+        let dateDelivered = Date(timeIntervalSince1970: timeDelivered)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        
+        cell.timeRequest.text = "\(dateFormatter.string(from: dateRequest))"
+        if timeProcessed != 0.0 {
+            cell.timeProcessed.text = "\(dateFormatter.string(from: dateProcessed))"
+        } else {
+            cell.timeProcessed.text = ""
+        }
+        if timeFinished != 0.0 {
+            cell.timeFinished.text = "\(dateFormatter.string(from: dateFinished))"
+        } else {
+            cell.timeFinished.text = ""
+        }
+        if timeDelivered != 0.0 {
+            cell.timeDelivered.text = "\(dateFormatter.string(from: dateDelivered))"
+        } else {
+            cell.timeDelivered.text = ""
+        }
+        
+        cell.progressView.progress = Float(currOrder.getStatus(currOrder.status))
+        
+        cell.timeStimatedCompletion.text = "\(dateFormatter.string(from: dateRequest.addingTimeInterval(30 * 60)))"
     
         return cell
     }
