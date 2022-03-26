@@ -50,7 +50,7 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
                                     ProgressHUD.show()
                                     changeRequest.commitChanges { (error) in
                                         ProgressHUD.dismiss()
-                                        let currUser = User(userId: user.uid, name: name, lastName: lastName, email: email, phoneNumber: phoneNumber, streaks: 0, isBaned: false)
+                                        let currUser = User(userId: user.uid, name: name, lastName: lastName, email: email, phoneNumber: phoneNumber, streaks: 0, isBaned: false, fcmToken: nil)
                                         
                                         let docRef = self.db.collection(K.Firebase.userCollection).document(user.uid)
                                         ProgressHUD.show()

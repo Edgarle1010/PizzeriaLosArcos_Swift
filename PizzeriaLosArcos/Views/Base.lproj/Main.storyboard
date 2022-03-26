@@ -1179,7 +1179,80 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZe-ks-Rlx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3212" y="-605"/>
+            <point key="canvasLocation" x="5193" y="1179"/>
+        </scene>
+        <!--Notifications View Controller-->
+        <scene sceneID="M77-SG-9yk">
+            <objects>
+                <viewController id="uZr-mP-x3G" customClass="NotificationsViewController" customModule="PizzeriaLosArcos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="glR-o5-CBt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4y-Ht-iUJ" userLabel="navigationView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notificaciones" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="807-Ju-bRp">
+                                        <rect key="frame" x="141.5" y="13.5" width="131" height="23"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGd-zU-zmM">
+                                        <rect key="frame" x="15" y="15" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="N2a-Fa-8KN"/>
+                                            <constraint firstAttribute="width" constant="20" id="SuD-Fq-iiG"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="back"/>
+                                        <connections>
+                                            <action selector="backPressed:" destination="uZr-mP-x3G" eventType="touchUpInside" id="AaP-61-Wid"/>
+                                            <action selector="backPressed:" destination="9bG-3O-HhM" eventType="touchUpInside" id="ppe-su-h33"/>
+                                            <action selector="backPressed:" destination="JGw-ue-bFs" eventType="touchUpInside" id="uub-7J-YFa"/>
+                                            <action selector="backPressed:" destination="1N1-E8-qx4" eventType="touchUpInside" id="wz5-XA-fZr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="thirdColor"/>
+                                <constraints>
+                                    <constraint firstItem="807-Ju-bRp" firstAttribute="centerX" secondItem="v4y-Ht-iUJ" secondAttribute="centerX" id="DmT-88-3g0"/>
+                                    <constraint firstItem="eGd-zU-zmM" firstAttribute="leading" secondItem="v4y-Ht-iUJ" secondAttribute="leading" constant="15" id="KgT-DP-Fo9"/>
+                                    <constraint firstItem="807-Ju-bRp" firstAttribute="centerY" secondItem="v4y-Ht-iUJ" secondAttribute="centerY" id="dST-Dd-CvB"/>
+                                    <constraint firstItem="eGd-zU-zmM" firstAttribute="top" secondItem="v4y-Ht-iUJ" secondAttribute="top" constant="15" id="mEv-Ib-Bsa"/>
+                                    <constraint firstAttribute="height" constant="50" id="xhE-9J-Fs6"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="hEX-rP-iL4">
+                                <rect key="frame" x="0.0" y="50" width="414" height="792"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="uZr-mP-x3G" id="QzX-pV-PWL"/>
+                                    <outlet property="delegate" destination="uZr-mP-x3G" id="zAF-kK-b7V"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="o3F-jn-DHF"/>
+                        <color key="backgroundColor" name="quarterColor"/>
+                        <constraints>
+                            <constraint firstItem="v4y-Ht-iUJ" firstAttribute="trailing" secondItem="o3F-jn-DHF" secondAttribute="trailing" id="0Nw-LM-dhY"/>
+                            <constraint firstItem="v4y-Ht-iUJ" firstAttribute="top" secondItem="glR-o5-CBt" secondAttribute="top" id="2Wk-me-quE"/>
+                            <constraint firstItem="hEX-rP-iL4" firstAttribute="top" secondItem="v4y-Ht-iUJ" secondAttribute="bottom" id="2w2-1J-bpY"/>
+                            <constraint firstItem="hEX-rP-iL4" firstAttribute="leading" secondItem="o3F-jn-DHF" secondAttribute="leading" id="ADJ-i0-98b"/>
+                            <constraint firstItem="hEX-rP-iL4" firstAttribute="bottom" secondItem="o3F-jn-DHF" secondAttribute="bottom" id="IJh-d7-2Mv"/>
+                            <constraint firstItem="hEX-rP-iL4" firstAttribute="trailing" secondItem="o3F-jn-DHF" secondAttribute="trailing" id="MSs-rM-fjq"/>
+                            <constraint firstItem="v4y-Ht-iUJ" firstAttribute="leading" secondItem="o3F-jn-DHF" secondAttribute="leading" id="oTx-gU-bMV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="eGd-zU-zmM" id="YTi-xf-ZiQ"/>
+                        <outlet property="tableView" destination="hEX-rP-iL4" id="1di-lm-WPd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aO4-tP-loj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6228.985507246377" y="1177.2321428571429"/>
         </scene>
         <!--Menú-->
         <scene sceneID="ug5-UO-g6u">
@@ -3314,7 +3387,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="notifications"/>
                                 <connections>
-                                    <action selector="notificationsButtonPressed:" destination="Lpo-kh-xmT" eventType="touchUpInside" id="Kl3-iq-sEx"/>
+                                    <segue destination="uZr-mP-x3G" kind="presentation" id="Hbb-Uh-oB9"/>
                                 </connections>
                             </button>
                             <color key="tintColor" name="primaryColor"/>
@@ -3351,7 +3424,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UHt-g6-1wM"/>
+        <segue reference="jjN-4p-QfY"/>
         <segue reference="BpK-OX-8hb"/>
     </inferredMetricsTieBreakers>
     <resources>

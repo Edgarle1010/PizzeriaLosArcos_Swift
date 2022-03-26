@@ -33,6 +33,10 @@
 		B34A5D79277D623000EC8D3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B34A5D78277D623000EC8D3A /* GoogleService-Info.plist */; };
 		B35BC1B527ED858C00E4B766 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BC1B427ED858C00E4B766 /* PushNotificationManager.swift */; };
 		B369792C27E83F3800E09B80 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B369792B27E83F3800E09B80 /* Reachability.swift */; };
+		B381E02C27EEB9E200C7B4B0 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B381E02B27EEB9E200C7B4B0 /* NotificationsViewController.swift */; };
+		B381E02F27EEBC0300C7B4B0 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B381E02D27EEBC0300C7B4B0 /* NotificationsTableViewCell.swift */; };
+		B381E03027EEBC0300C7B4B0 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B381E02E27EEBC0300C7B4B0 /* NotificationsTableViewCell.xib */; };
+		B381E03227EEC16800C7B4B0 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B381E03127EEC16800C7B4B0 /* Notification.swift */; };
 		B3A4DE8827E19E5E00CF47E7 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A4DE8727E19E5E00CF47E7 /* Order.swift */; };
 		B3B82F0A2797CA4E00B04C20 /* AmountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B82F092797CA4E00B04C20 /* AmountViewController.swift */; };
 		B3B82F0D2797D7DE00B04C20 /* ExtraIngredientCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B82F0B2797D7DE00B04C20 /* ExtraIngredientCollectionViewCell.swift */; };
@@ -90,6 +94,10 @@
 		B34A5D78277D623000EC8D3A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B35BC1B427ED858C00E4B766 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		B369792B27E83F3800E09B80 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		B381E02B27EEB9E200C7B4B0 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		B381E02D27EEBC0300C7B4B0 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
+		B381E02E27EEBC0300C7B4B0 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		B381E03127EEC16800C7B4B0 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		B3A4DE8727E19E5E00CF47E7 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		B3B82F092797CA4E00B04C20 /* AmountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountViewController.swift; sourceTree = "<group>"; };
 		B3B82F0B2797D7DE00B04C20 /* ExtraIngredientCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraIngredientCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -185,6 +193,7 @@
 				B3E4B5B52796707F0031D940 /* ExtraIngredient.swift */,
 				B30CE524279A77F0005AD2EA /* Item.swift */,
 				B3A4DE8727E19E5E00CF47E7 /* Order.swift */,
+				B381E03127EEC16800C7B4B0 /* Notification.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,6 +210,8 @@
 				B330BA8E279BD13D002EA7E4 /* ItemTableViewCell.xib */,
 				B3DD370B27E97D8F00AF4615 /* OrderTableViewCell.swift */,
 				B3DD370C27E97D8F00AF4615 /* OrderTableViewCell.xib */,
+				B381E02D27EEBC0300C7B4B0 /* NotificationsTableViewCell.swift */,
+				B381E02E27EEBC0300C7B4B0 /* NotificationsTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -231,6 +242,7 @@
 				B326E1DA27BA0F6900BF9493 /* ChangePasswordViewController.swift */,
 				B3C960E827C607BA0005EE23 /* AboutViewController.swift */,
 				B3DD370927E97C3000AF4615 /* OrdersInProcessViewController.swift */,
+				B381E02B27EEB9E200C7B4B0 /* NotificationsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -305,6 +317,7 @@
 			files = (
 				B3B82F0E2797D7DE00B04C20 /* ExtraIngredientCollectionViewCell.xib in Resources */,
 				B34A5D6E277D603F00EC8D3A /* LaunchScreen.storyboard in Resources */,
+				B381E03027EEBC0300C7B4B0 /* NotificationsTableViewCell.xib in Resources */,
 				B34A5D79277D623000EC8D3A /* GoogleService-Info.plist in Resources */,
 				B34A5D6B277D603F00EC8D3A /* Assets.xcassets in Resources */,
 				B302D60C278EAC72002EAEA2 /* FoodCollectionViewCell.xib in Resources */,
@@ -363,6 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B381E02F27EEBC0300C7B4B0 /* NotificationsTableViewCell.swift in Sources */,
 				B326E1DB27BA0F6900BF9493 /* ChangePasswordViewController.swift in Sources */,
 				B326E1D927B9DA2300BF9493 /* EditUserNameViewController.swift in Sources */,
 				B33C9E6727C8AC9B0058225D /* OpenMapDirections.swift in Sources */,
@@ -393,6 +407,7 @@
 				B3BAA44A27952D5E00BFADAA /* HalfFoodViewController.swift in Sources */,
 				B3B82F102797E7E600B04C20 /* DynamicHeightCollectionView.swift in Sources */,
 				B330BA8F279BD13D002EA7E4 /* ItemTableViewCell.swift in Sources */,
+				B381E02C27EEB9E200C7B4B0 /* NotificationsViewController.swift in Sources */,
 				B3C960E927C607BA0005EE23 /* AboutViewController.swift in Sources */,
 				B3E4B5B8279681C50031D940 /* ExtraIngredientViewController.swift in Sources */,
 				B342F30B2787CD87004BC31D /* LoginViewController.swift in Sources */,
@@ -400,6 +415,7 @@
 				B3DD370A27E97C3000AF4615 /* OrdersInProcessViewController.swift in Sources */,
 				B3C848792791282400A3FC5A /* Food.swift in Sources */,
 				B3E4B5B62796707F0031D940 /* ExtraIngredient.swift in Sources */,
+				B381E03227EEC16800C7B4B0 /* Notification.swift in Sources */,
 				B342F3092787CBED004BC31D /* Util.swift in Sources */,
 				B3D465DE278A3865000DA775 /* ShoppingCarViewController.swift in Sources */,
 				B30CE525279A77F0005AD2EA /* Item.swift in Sources */,

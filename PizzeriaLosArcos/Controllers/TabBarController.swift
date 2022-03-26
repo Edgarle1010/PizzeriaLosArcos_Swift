@@ -21,6 +21,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     let db = Firestore.firestore()
     
     var ordersList: [Order] = []
+    var notifications: [Notification] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         guard let itemList = itemList else {
             return
         }
-
+        
         notificationToken = itemList.observe { [weak self] (changes: RealmCollectionChange) in
             guard let tabItems = self?.tabBar.items else { return }
             let tabItem = tabItems[1]
@@ -57,6 +58,56 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             }
         }
         
+        getOrdersInProccess()
+        
+        getNotifications()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.hidesBackButton = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationItem.hidesBackButton = false
+    }
+    
+    let badgeSize: CGFloat = 20
+    let badgeTag = 9830384
+    
+    func badgeLabel(withCount count: Int) -> UILabel {
+        let badgeCount = UILabel(frame: CGRect(x: 0, y: 0, width: badgeSize, height: badgeSize))
+        badgeCount.translatesAutoresizingMaskIntoConstraints = false
+        badgeCount.tag = badgeTag
+        badgeCount.layer.cornerRadius = badgeCount.bounds.size.height / 2
+        badgeCount.textAlignment = .center
+        badgeCount.layer.masksToBounds = true
+        badgeCount.textColor = .white
+        badgeCount.font = badgeCount.font.withSize(12)
+        badgeCount.backgroundColor = .systemRed
+        badgeCount.text = String(count)
+        return badgeCount
+    }
+    
+    func showBadge(withCount count: Int, _ button: UIButton) {
+        let badge = badgeLabel(withCount: count)
+        button.addSubview(badge)
+        
+        NSLayoutConstraint.activate([
+            badge.leftAnchor.constraint(equalTo: button.leftAnchor, constant: 14),
+            badge.topAnchor.constraint(equalTo: button.topAnchor, constant: 4),
+            badge.widthAnchor.constraint(equalToConstant: badgeSize),
+            badge.heightAnchor.constraint(equalToConstant: badgeSize)
+        ])
+    }
+    
+    func removeBadge(_ button: UIButton) {
+        if let badge = button.viewWithTag(badgeTag) {
+            badge.removeFromSuperview()
+        }
+    }
+    
+    func getOrdersInProccess() {
         NSLayoutConstraint.activate([
             ordersInProccessButton.widthAnchor.constraint(equalToConstant: 34),
             ordersInProccessButton.heightAnchor.constraint(equalToConstant: 44),
@@ -86,55 +137,78 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                             }
                             
                             DispatchQueue.main.async {
-                                self.showBadge(withCount: self.ordersList.count)
+                                if self.ordersList.count != 0 {
+                                    self.showBadge(withCount: self.ordersList.count, self.ordersInProccessButton)
+                                } else {
+                                    self.removeBadge(self.ordersInProccessButton)
+                                }
                             }
                         }
                     }
                 }
-                
+            
         }
-        
     }
     
-    let badgeSize: CGFloat = 20
-    let badgeTag = 9830384
-
-    func badgeLabel(withCount count: Int) -> UILabel {
-        let badgeCount = UILabel(frame: CGRect(x: 0, y: 0, width: badgeSize, height: badgeSize))
-        badgeCount.translatesAutoresizingMaskIntoConstraints = false
-        badgeCount.tag = badgeTag
-        badgeCount.layer.cornerRadius = badgeCount.bounds.size.height / 2
-        badgeCount.textAlignment = .center
-        badgeCount.layer.masksToBounds = true
-        badgeCount.textColor = .white
-        badgeCount.font = badgeCount.font.withSize(12)
-        badgeCount.backgroundColor = .systemRed
-        badgeCount.text = String(count)
-        return badgeCount
+    func getUserToken(completion: @escaping (String) -> Void) {
+        guard let userID = Auth.auth().currentUser?.uid else {
+            return
+        }
+        db.collection(K.Firebase.userCollection).document(userID).getDocument { document, error in
+            if let error = error {
+                self.alert(title: "¡Ha ocurrido un problema!", message: error.localizedDescription)
+            } else {
+                if let document = document, document.exists {
+                    let data = document.data()
+                    if let userToken = data?[K.Firebase.fcmToken] as? String {
+                        completion(userToken)
+                    }
+                } else {
+                    self.alert(title: "¡Ha ocurrido un problema!", message: error!.localizedDescription)
+                }
+            }
+        }
     }
     
-    func showBadge(withCount count: Int) {
-        let badge = badgeLabel(withCount: count)
-        ordersInProccessButton.addSubview(badge)
-
+    func getNotifications() {
         NSLayoutConstraint.activate([
-            badge.leftAnchor.constraint(equalTo: ordersInProccessButton.leftAnchor, constant: 14),
-            badge.topAnchor.constraint(equalTo: ordersInProccessButton.topAnchor, constant: 4),
-            badge.widthAnchor.constraint(equalToConstant: badgeSize),
-            badge.heightAnchor.constraint(equalToConstant: badgeSize)
+            notificationsButton.widthAnchor.constraint(equalToConstant: 34),
+            notificationsButton.heightAnchor.constraint(equalToConstant: 44),
         ])
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationItem.hidesBackButton = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationItem.hidesBackButton = false
-    }
-    
-    @IBAction func notificationsButtonPressed(_ sender: UIButton) {
         
+        getUserToken { userToken in
+            self.db.collection(K.Firebase.notificationsCollection)
+                .addSnapshotListener { querySnapshot, error in
+                    self.notifications = []
+                    if let error = error {
+                        self.alert(title: "¡Ha ocurrido un problema!", message: error.localizedDescription)
+                    } else {
+                        if let documents = querySnapshot?.documents {
+                            for doc in documents {
+                                let result = Result {
+                                    try doc.data(as: Notification.self)
+                                }
+                                switch result {
+                                case .success(let notification):
+                                    if !notification.viewed && notification.userToken.elementsEqual(userToken) {
+                                        self.notifications.append(notification)
+                                    }
+                                case .failure(let error):
+                                    print("Error decoding food: \(error)")
+                                }
+                            }
+                            
+                            DispatchQueue.main.async {
+                                if self.notifications.count != 0 {
+                                    self.showBadge(withCount: self.notifications.count, self.notificationsButton)
+                                } else {
+                                    self.removeBadge(self.notificationsButton)
+                                }
+                            }
+                        }
+                    }
+                }
+        }
     }
     
     

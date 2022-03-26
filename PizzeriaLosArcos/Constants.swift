@@ -120,6 +120,7 @@ struct K {
         static let nameField = "name"
         static let lastNameField = "lastName"
         static let baned = "isBaned"
+        static let fcmToken = "fcmToken"
         
         static let foodCollection = "Food"
         static let extraIngredientsCollection = "ExtraIngredients"
@@ -136,6 +137,9 @@ struct K {
         
         static let ordersCollection = "orders"
         static let client = "client"
+        
+        static let notificationsCollection = "notifications"
+        static let userToken = "userToken"
         
     }
     
@@ -184,7 +188,9 @@ struct K {
         static let extraIngredientCell = "extraIngredientCell"
         static let itemTableViewCell = "ItemTableViewCell"
         static let itemCell = "itemCell"
-        static let orderTebleViewCell = "OrderTableViewCell"
+        static let orderTableViewCell = "OrderTableViewCell"
         static let orderCell = "orderCell"
+        static let notificationTableViewCell = "NotificationsTableViewCell"
+        static let notificationCell = "notificationCell"
     }
 }

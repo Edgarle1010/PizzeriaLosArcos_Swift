@@ -15,6 +15,7 @@ public struct User: Codable {
     let phoneNumber: String
     let streaks: Int
     let isBaned: Bool
+    let fcmToken: String?
     
     enum CodingKeys: String, CodingKey {
         case userId
@@ -24,6 +25,7 @@ public struct User: Codable {
         case phoneNumber
         case streaks
         case isBaned
+        case fcmToken
     }
     
     

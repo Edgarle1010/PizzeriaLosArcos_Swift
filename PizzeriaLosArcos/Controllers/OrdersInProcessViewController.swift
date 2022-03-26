@@ -26,7 +26,7 @@ class OrdersInProcessViewController: UIViewController {
         backButton.setImage(tintedImage, for: .normal)
         backButton.tintColor = UIColor.init(named: K.BrandColors.primaryColor)
         
-        tableView.register(UINib(nibName: K.Collections.orderTebleViewCell, bundle: nil), forCellReuseIdentifier: K.Collections.orderCell)
+        tableView.register(UINib(nibName: K.Collections.orderTableViewCell, bundle: nil), forCellReuseIdentifier: K.Collections.orderCell)
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.allowsSelection = false
@@ -62,7 +62,6 @@ class OrdersInProcessViewController: UIViewController {
                         }
                     }
                 }
-                
         }
     }
     
