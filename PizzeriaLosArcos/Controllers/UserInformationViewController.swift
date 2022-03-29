@@ -51,6 +51,11 @@ class UserInformationViewController: UIViewController, UpdateViewController {
     @objc func checkAction(sender : UITapGestureRecognizer) {
         let tag = sender.view!.tag
         
+        guard let user = Auth.auth().currentUser else {
+            self.alert(title: K.Texts.guestMode, message: K.Texts.guestFunctionsMessage)
+            return
+        }
+        
         switch tag {
         case 0:
             userNameView.showAnimation {
@@ -69,32 +74,30 @@ class UserInformationViewController: UIViewController, UpdateViewController {
                 }
                 alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { action in
                     if let currentPassword = alert.textFields![0].text, let email = Auth.auth().currentUser?.email  {
-                        if let user = Auth.auth().currentUser {
-                            let credential = EmailAuthProvider.credential(withEmail: email, password: currentPassword)
-                            
-                            ProgressHUD.show()
-                            user.reauthenticate(with: credential) { AuthDataResult, error in
-                                ProgressHUD.dismiss()
-                                if let error = error {
-                                    self.alert(title: "¡Ha ocurrido un error!", message: error.localizedDescription)
-                                } else {
-                                    ProgressHUD.show()
-                                    user.delete { error in
-                                        ProgressHUD.dismiss()
-                                        if let error = error {
-                                            self.alert(title: "¡Ha ocurrido un error!", message: error.localizedDescription)
-                                        } else {
-                                            let alert = UIAlertController(title: "Cuenta eliminada correctamente", message: nil, preferredStyle: .alert)
-                                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                                                try! self.realm.write {
-                                                    self.realm.deleteAll()
-                                                }
-                                                
-                                                self.navigationController?.popToRootViewController(animated: true)
-                                            }))
-                                            self.present(alert, animated: true, completion: nil)
+                        let credential = EmailAuthProvider.credential(withEmail: email, password: currentPassword)
+                        
+                        ProgressHUD.show()
+                        user.reauthenticate(with: credential) { AuthDataResult, error in
+                            ProgressHUD.dismiss()
+                            if let error = error {
+                                self.alert(title: "¡Ha ocurrido un error!", message: error.localizedDescription)
+                            } else {
+                                ProgressHUD.show()
+                                user.delete { error in
+                                    ProgressHUD.dismiss()
+                                    if let error = error {
+                                        self.alert(title: "¡Ha ocurrido un error!", message: error.localizedDescription)
+                                    } else {
+                                        let alert = UIAlertController(title: "Cuenta eliminada correctamente", message: nil, preferredStyle: .alert)
+                                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                                            try! self.realm.write {
+                                                self.realm.deleteAll()
+                                            }
                                             
-                                        }
+                                            self.navigationController?.popToRootViewController(animated: true)
+                                        }))
+                                        self.present(alert, animated: true, completion: nil)
+                                        
                                     }
                                 }
                             }

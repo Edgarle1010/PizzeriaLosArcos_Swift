@@ -31,8 +31,8 @@ class OrdersInProcessViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.allowsSelection = false
         
-        ProgressHUD.show()
         if let user = Auth.auth().currentUser?.phoneNumber {
+            ProgressHUD.show()
             db.collection(K.Firebase.ordersCollection)
                 .whereField(K.Firebase.client, isEqualTo: user)
                 .addSnapshotListener { querySnapshot, error in
@@ -62,7 +62,7 @@ class OrdersInProcessViewController: UIViewController {
                         }
                     }
                 }
-        }
+        } 
     }
     
     override func viewWillAppear(_ animated: Bool) {

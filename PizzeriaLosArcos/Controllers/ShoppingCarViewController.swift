@@ -56,21 +56,20 @@ class ShoppingCarViewController: UIViewController {
             alert(title: K.Texts.listEmpty, message: nil)
         } else {
             if Reachability.isConnectedToNetwork() {
-                waitTime { waitTime in
-                    if let waitTime = waitTime {
-                        let alert = UIAlertController(title: K.Texts.questionOrder, message: "Tiempo de espera promedio: \(String(describing: waitTime)) minutos", preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Sí", style: .cancel, handler: { action in
-                            self.banedStatus { isBaned in
-                                if isBaned! {
-                                    self.alert(title: K.Texts.problemOcurred, message: K.Texts.suspendedAccount)
-                                } else {
-                                    self.checkService { activeService in
-                                        if !activeService {
-                                            self.alert(title: K.Texts.outOfService, message: self.messageStatus)
-                                        } else {
-                                            self.getOrderID { folio in
-                                                if let user = Auth.auth().currentUser {
-                                                    
+                if let user = Auth.auth().currentUser {
+                    waitTime { waitTime in
+                        if let waitTime = waitTime {
+                            let alert = UIAlertController(title: K.Texts.questionOrder, message: "Tiempo de espera promedio: \(String(describing: waitTime)) minutos", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "Sí", style: .cancel, handler: { action in
+                                self.banedStatus { isBaned in
+                                    if isBaned! {
+                                        self.alert(title: K.Texts.problemOcurred, message: K.Texts.suspendedAccount)
+                                    } else {
+                                        self.checkService { activeService in
+                                            if !activeService {
+                                                self.alert(title: K.Texts.outOfService, message: self.messageStatus)
+                                            } else {
+                                                self.getOrderID { folio in
                                                     let itemList = List<Item>()
                                                     itemList.append(objectsIn: self.realm.objects(Item.self))
                                                     
@@ -82,11 +81,14 @@ class ShoppingCarViewController: UIViewController {
                                         }
                                     }
                                 }
-                            }
-                        }))
-                        alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
+                            }))
+                            alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        }
                     }
+                }
+                else {
+                    self.alert(title: K.Texts.guestMode, message: K.Texts.guestFunctionsMessage)
                 }
             } else {
                 self.alert(title: "¡Ha ocurrido un problema!", message: "Revisa tu conexión a internet y vuelve a intentar")

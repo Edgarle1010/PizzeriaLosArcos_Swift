@@ -19,8 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        let pushManager = PushNotificationManager(userID: Auth.auth().currentUser!.uid)
-        pushManager.registerForPushNotifications()
+        if let userID = Auth.auth().currentUser?.uid {
+            let pushManager = PushNotificationManager(userID: userID)
+            pushManager.registerForPushNotifications()
+        }
         
         do {
             _ = try Realm()

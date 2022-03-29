@@ -17,6 +17,8 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
     
     let db = Firestore.firestore()
     
+    var isRecoveryProcess = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,10 +27,16 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         verifyPasswordTextField.delegate = self
         
+        isRecoveryProcess = UserDefaults.standard.bool(forKey: K.UserDef.isRecoveryProcess)
+        
+        if isRecoveryProcess {
+            signinPressed.setTitle("Iniciar sesión", for: .normal)
+        }
+        
     }
     
     @IBAction func signinPressed(_ sender: UIButton) {
-        if let password = passwordTextField.text, let verifyPassword = verifyPasswordTextField.text, let user = Auth.auth().currentUser, let email = UserDefaults.standard.string(forKey: K.UserDef.email) {
+        if let password = passwordTextField.text, let verifyPassword = verifyPasswordTextField.text, let user = Auth.auth().currentUser {
             if password == verifyPassword {
                 ProgressHUD.show()
                 user.updatePassword(to: password) { error in
@@ -36,31 +44,37 @@ class CreatePasswordViewController: UIViewController, UITextFieldDelegate {
                     if let error = error {
                         self.alert(title: "¡Ha ocurrido un error!", message: error.localizedDescription)
                     } else {
-                        ProgressHUD.show()
-                        user.updateEmail(to: email) { error in
-                            ProgressHUD.dismiss()
-                            if let error = error {
-                                self.alert(title: "¡Ha ocurrido un error!", message: error.localizedDescription)
-                            } else {
-                                let changeRequest = user.createProfileChangeRequest()
-                                if let name = UserDefaults.standard.string(forKey: K.UserDef.name),
-                                   let lastName = UserDefaults.standard.string(forKey: K.UserDef.lastName),
-                                   let phoneNumber = UserDefaults.standard.string(forKey: K.UserDef.phoneNumber) {
-                                    changeRequest.displayName = "\(name) \(lastName)"
-                                    ProgressHUD.show()
-                                    changeRequest.commitChanges { (error) in
-                                        ProgressHUD.dismiss()
-                                        let currUser = User(userId: user.uid, name: name, lastName: lastName, email: email, phoneNumber: phoneNumber, streaks: 0, isBaned: false, fcmToken: nil)
-                                        
-                                        let docRef = self.db.collection(K.Firebase.userCollection).document(user.uid)
-                                        ProgressHUD.show()
-                                        do {
-                                            ProgressHUD.dismiss()
-                                            try docRef.setData(from: currUser)
-                                            self.performSegue(withIdentifier: K.Segues.createPasswordToMenu, sender: self)
-                                        }
-                                        catch {
-                                            self.alert(title: "¡Ha ocurrido un error!", message: error.localizedDescription)
+                        if self.isRecoveryProcess {
+                            self.performSegue(withIdentifier: K.Segues.createPasswordToMenu, sender: self)
+                        } else {
+                            if let email = UserDefaults.standard.string(forKey: K.UserDef.email) {
+                                ProgressHUD.show()
+                                user.updateEmail(to: email) { error in
+                                    ProgressHUD.dismiss()
+                                    if let error = error {
+                                        self.alert(title: "¡Ha ocurrido un error!", message: error.localizedDescription)
+                                    } else {
+                                        let changeRequest = user.createProfileChangeRequest()
+                                        if let name = UserDefaults.standard.string(forKey: K.UserDef.name),
+                                           let lastName = UserDefaults.standard.string(forKey: K.UserDef.lastName),
+                                           let phoneNumber = UserDefaults.standard.string(forKey: K.UserDef.phoneNumber) {
+                                            changeRequest.displayName = "\(name) \(lastName)"
+                                            ProgressHUD.show()
+                                            changeRequest.commitChanges { (error) in
+                                                ProgressHUD.dismiss()
+                                                let currUser = User(userId: user.uid, name: name, lastName: lastName, email: email, phoneNumber: phoneNumber, streaks: 0, isBaned: false, fcmToken: nil)
+                                                
+                                                let docRef = self.db.collection(K.Firebase.userCollection).document(user.uid)
+                                                ProgressHUD.show()
+                                                do {
+                                                    ProgressHUD.dismiss()
+                                                    try docRef.setData(from: currUser)
+                                                    self.performSegue(withIdentifier: K.Segues.createPasswordToMenu, sender: self)
+                                                }
+                                                catch {
+                                                    self.alert(title: "¡Ha ocurrido un error!", message: error.localizedDescription)
+                                                }
+                                            }
                                         }
                                     }
                                 }

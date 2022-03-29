@@ -63,6 +63,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     loginEmailPasswordUser(email, password)
                 }
             }
+        case 5:
+            UserDefaults.standard.set(true, forKey: K.UserDef.isRecoveryProcess)
+            self.performSegue(withIdentifier: K.Segues.loginToVerificationCode, sender: self)
         default:
             break;
         }

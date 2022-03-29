@@ -34,6 +34,12 @@ struct K {
         static let orderSentSuccessfullyTitle = "Pedido enviado correctamente"
         static var orderSuccessfullyMessage = "Tu pedido ya está en proceso, puedes pasar por el en %@ minutos. \nNúmero de folio: %@\n\nRecuerda recogerlo en la pizzería ubicada en el Periférico Gómez Morín"
         
+        static let guestMode = "Modo invitado"
+        static let guestMessage = "Iniciaras sesión en modo invitado, podrás ver el menú completo y la mayoria de las funciones pero no podrás realizar pedidos hasta realizar el proceso de registro."
+        static let guestFunctionsMessage = "Al estar en modo invitado no tienes acceso a esta función. Inicia sesión o registrate para continuar."
+        static let goBack = "Volver"
+        static let ok = "OK"
+        
         static let FOOD_TYPE = "FOOD_TYPE"
         static let FOOD_TITLE = "FOOD_TITLE"
         static let FOOD_ITEM = "FOOD_ITEM"
@@ -97,6 +103,7 @@ struct K {
         static let email = "email"
         static let authVerificationID = "authVerificationID"
         static let phoneNumber = "phoneNumber"
+        static let isRecoveryProcess = "isRecoveryProcess"
     }
     
     struct BrandColors {
@@ -154,6 +161,8 @@ struct K {
     
     struct Segues {
         static let loginToMenu = "LoginToMenu"
+        static let loginToVerificationCode = "LoginToVerificationCode"
+        static let guestToMenu = "GuestToMenu"
         static let userInformationToPhoneNumber = "UserInformationToPhoneNumber"
         static let phoneNumberToVerificationCode = "PhoneNumberToVerificationCode"
         static let verificationCodeToCreatePassword = "VerificationCodeToCreatePassword"

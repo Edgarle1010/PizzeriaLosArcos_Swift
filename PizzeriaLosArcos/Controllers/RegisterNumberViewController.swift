@@ -14,6 +14,8 @@ class RegisterNumberViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var nextButton: ButtonWithShadow!
     
+    var isRecoveryProcess = false
+    
     let db = Firestore.firestore()
     
     let regionPicker = UIPickerView()
@@ -28,6 +30,12 @@ class RegisterNumberViewController: UIViewController, UITextFieldDelegate {
         
         regionTextField.inputView = regionPicker
         regionPicker.delegate = self
+        
+        isRecoveryProcess = UserDefaults.standard.bool(forKey: K.UserDef.isRecoveryProcess)
+        
+        if isRecoveryProcess {
+            navigationItem.title = "Crea una nueva contraseña con tu número celular"
+        }
         
     }
     
@@ -52,18 +60,37 @@ class RegisterNumberViewController: UIViewController, UITextFieldDelegate {
                 } else {
                     if let documents = querySnapshot?.documents {
                         if documents.count != 0 {
-                            self.alert(title: "¡Ha ocurrido un problema!", message: "El número celular ya ha sido registrado anteriormente")
+                            if self.isRecoveryProcess {
+                                ProgressHUD.show()
+                                PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
+                                    ProgressHUD.dismiss()
+                                    if let error = error {
+                                        self.alert(title: "¡Ha ocurrido un problema!", message: "\(error.localizedDescription)")
+                                    } else {
+                                        UserDefaults.standard.set(verificationID, forKey: K.UserDef.authVerificationID)
+                                        UserDefaults.standard.set(phoneNumber, forKey: K.UserDef.phoneNumber)
+                                        
+                                        self.performSegue(withIdentifier: K.Segues.phoneNumberToVerificationCode, sender: self)
+                                    }
+                                }
+                            } else {
+                                self.alert(title: "¡Ha ocurrido un problema!", message: "El número celular ya ha sido registrado anteriormente")
+                            }
                         } else {
-                            ProgressHUD.show()
-                            PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
-                                ProgressHUD.dismiss()
-                                if let error = error {
-                                    self.alert(title: "¡Ha ocurrido un problema!", message: "\(error.localizedDescription)")
-                                } else {
-                                    UserDefaults.standard.set(verificationID, forKey: K.UserDef.authVerificationID)
-                                    UserDefaults.standard.set(phoneNumber, forKey: K.UserDef.phoneNumber)
-                                    
-                                    self.performSegue(withIdentifier: K.Segues.phoneNumberToVerificationCode, sender: self)
+                            if self.isRecoveryProcess {
+                                self.alert(title: K.Texts.problemOcurred, message: "No se encuentra ninguna cuenta registrada con este número")
+                            } else {
+                                ProgressHUD.show()
+                                PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
+                                    ProgressHUD.dismiss()
+                                    if let error = error {
+                                        self.alert(title: "¡Ha ocurrido un problema!", message: "\(error.localizedDescription)")
+                                    } else {
+                                        UserDefaults.standard.set(verificationID, forKey: K.UserDef.authVerificationID)
+                                        UserDefaults.standard.set(phoneNumber, forKey: K.UserDef.phoneNumber)
+                                        
+                                        self.performSegue(withIdentifier: K.Segues.phoneNumberToVerificationCode, sender: self)
+                                    }
                                 }
                             }
                         }

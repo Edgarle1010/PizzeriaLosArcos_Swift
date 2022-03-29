@@ -15,13 +15,10 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set top Nav Bar behavior for ALL of app
         let standardAppearance = UINavigationBarAppearance()
 
-        // Title font color
         standardAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(named: K.BrandColors.primaryColor)!]
 
-        // prevent Nav Bar color change on scroll view push behind NavBar
         standardAppearance.configureWithOpaqueBackground()
         standardAppearance.backgroundColor = UIColor(named: K.BrandColors.secundaryColor)
 
@@ -30,15 +27,25 @@ class WelcomeViewController: UIViewController {
         
         AppManager.shared.appContainer = self
         AppManager.shared.showApp()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = true
+        UserDefaults.standard.set(false, forKey: K.UserDef.isRecoveryProcess)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
+    }
+    
+    @IBAction func guestPressed(_ sender: UIButton) {
+        let alert = UIAlertController(title: K.Texts.guestMode, message: K.Texts.guestMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: K.Texts.ok, style: .default, handler: { UIAlertAction in
+            self.performSegue(withIdentifier: K.Segues.guestToMenu, sender: self)
+        }))
+        alert.addAction(UIAlertAction(title: K.Texts.goBack, style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        return
     }
 }
 
