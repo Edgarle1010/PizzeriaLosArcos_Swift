@@ -96,7 +96,7 @@ class ShoppingCarViewController: UIViewController {
         }
     }
     
-    func waitTime(completion: @escaping (String?) -> Void) {
+    func waitTime(completion: @escaping (Int?) -> Void) {
         ProgressHUD.show()
         db.collection(K.Firebase.waitTimeCollection).document(K.Firebase.time).getDocument { (document, error) in
             ProgressHUD.dismiss()
@@ -105,7 +105,7 @@ class ShoppingCarViewController: UIViewController {
             } else {
                 if let document = document, document.exists {
                     let data = document.data()
-                    if let waitTime = data?[K.Firebase.time] as? String {
+                    if let waitTime = data?[K.Firebase.time] as? Int {
                         completion(waitTime)
                     }
                 } else {
@@ -176,7 +176,7 @@ class ShoppingCarViewController: UIViewController {
         }
     }
     
-    func addOrder(_ order: Order, _ folio: String, _ waitTime: String) {
+    func addOrder(_ order: Order, _ folio: String, _ waitTime: Int) {
         ProgressHUD.show()
         do {
             ProgressHUD.dismiss()

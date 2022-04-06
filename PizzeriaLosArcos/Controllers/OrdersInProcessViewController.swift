@@ -39,7 +39,7 @@ class OrdersInProcessViewController: UIViewController {
                     ProgressHUD.dismiss()
                     self.ordersList = []
                     if let error = error {
-                        self.alert(title: "¡Ha ocurrido un problema!", message: error.localizedDescription)
+                        self.alert(title: K.Texts.problemOcurred, message: error.localizedDescription)
                     } else {
                         if let documents = querySnapshot?.documents {
                             for doc in documents {
@@ -75,7 +75,7 @@ class OrdersInProcessViewController: UIViewController {
     
     func alert(title: String?, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: K.Texts.ok, style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         return
     }

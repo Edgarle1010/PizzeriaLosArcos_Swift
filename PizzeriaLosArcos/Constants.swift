@@ -32,7 +32,7 @@ struct K {
         static let deleteAccountMessage = "\nTu cuenta será eleminada permanentemente junto con tu información de usuario.\n\nLas ordenes realizadas en esta cuentan seguiran almacenas en nuestros servidores por cuestiones de estadística, así como las incidencias que tuvo la cuenta al hacer uso del servicio.\n\nSi se quisiera crear una cuenta nueva con el número celular actual, será necesario contactar a soporte.\n\nIntroduce tu contraseña actual para continuar"
         
         static let orderSentSuccessfullyTitle = "Pedido enviado correctamente"
-        static var orderSuccessfullyMessage = "Tu pedido ya está en proceso, puedes pasar por el en %@ minutos. \nNúmero de folio: %@\n\nRecuerda recogerlo en la pizzería ubicada en el Periférico Gómez Morín"
+        static var orderSuccessfullyMessage = "Tu pedido ya está en proceso, puedes pasar por el en %d minutos. \nNúmero de folio: %@\n\nRecuerda recogerlo en la pizzería ubicada en el Periférico Gómez Morín"
         
         static let guestMode = "Modo invitado"
         static let guestMessage = "Iniciaras sesión en modo invitado, podrás ver el menú completo y la mayoria de las funciones pero no podrás realizar pedidos hasta realizar el proceso de registro."
