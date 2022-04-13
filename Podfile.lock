@@ -338,6 +338,7 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - BadgeHub (1.0.0)
   - BonsaiController (6.0.0)
   - BoringSSL-GRPC (0.0.7):
     - BoringSSL-GRPC/Implementation (= 0.0.7)
@@ -513,6 +514,7 @@ PODS:
   - SwipeCellKit (2.7.1)
 
 DEPENDENCIES:
+  - BadgeHub
   - BonsaiController
   - Firebase/Analytics
   - Firebase/Auth
@@ -528,6 +530,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - abseil
+    - BadgeHub
     - BonsaiController
     - BoringSSL-GRPC
     - Firebase
@@ -557,6 +560,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
+  BadgeHub: b227771329f78c37a2dae7502607ec6d00a50bd4
   BonsaiController: 63410fc39bc5b3a9df5b329dbc848b6b27edf663
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   Firebase: ee9b1d9b1801371e29f5591eda89eb5a314ab599
@@ -584,6 +588,6 @@ SPEC CHECKSUMS:
   RealmSwift: 0b03bb38001bee4280dcc27709e6b33f438cfad1
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
 
-PODFILE CHECKSUM: cbfb3d4be3afc2c9934dbf4c4a65f873c2363bcd
+PODFILE CHECKSUM: 107badb9ac82b1d9f7a8e861edcedea676cc5378
 
 COCOAPODS: 1.11.2

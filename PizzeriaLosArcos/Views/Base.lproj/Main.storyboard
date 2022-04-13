@@ -3384,7 +3384,7 @@
                     <navigationItem key="navigationItem" id="57U-pX-0fu">
                         <barButtonItem key="leftBarButtonItem" style="done" id="4RS-uf-RuR">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="4VN-y3-WFc">
-                                <rect key="frame" x="20" y="5" width="92" height="34.5"/>
+                                <rect key="frame" x="20" y="9.5" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="notifications"/>
@@ -3395,8 +3395,8 @@
                             <color key="tintColor" name="primaryColor"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" id="GkX-8d-13T">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="cOC-UV-f8q">
-                                <rect key="frame" x="345" y="0.0" width="49" height="44"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="cOC-UV-f8q">
+                                <rect key="frame" x="369" y="9.5" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="history_icon"/>
@@ -3414,7 +3414,7 @@
                     </tabBar>
                     <connections>
                         <outlet property="notificationsButton" destination="4VN-y3-WFc" id="8rD-Rx-gtR"/>
-                        <outlet property="ordersInProccessButton" destination="cOC-UV-f8q" id="8da-rx-1id"/>
+                        <outlet property="ordersInProcessButton" destination="cOC-UV-f8q" id="gUJ-hZ-e3y"/>
                         <segue destination="bLW-b7-aPj" kind="relationship" relationship="viewControllers" id="jFm-vX-Snf"/>
                         <segue destination="fjM-13-6Ld" kind="relationship" relationship="viewControllers" id="aje-BY-eN2"/>
                         <segue destination="4DO-67-Pfa" kind="relationship" relationship="viewControllers" id="xDK-O0-2yT"/>

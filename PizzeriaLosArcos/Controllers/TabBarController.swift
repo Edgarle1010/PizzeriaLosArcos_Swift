@@ -9,9 +9,10 @@ import UIKit
 import RealmSwift
 import Firebase
 import FirebaseFirestoreSwift
+import BadgeHub
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
-    @IBOutlet weak var ordersInProccessButton: UIButton!
+    @IBOutlet weak var ordersInProcessButton: UIButton!
     @IBOutlet weak var notificationsButton: UIButton!
     
     var notificationToken: NotificationToken?
@@ -26,10 +27,16 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let ordersInProcessHub = BadgeHub(view: ordersInProcessButton)
+        ordersInProcessHub.scaleCircleSize(by: 0.65)
+
+        let notificationsHub = BadgeHub(view: notificationsButton)
+        notificationsHub.scaleCircleSize(by: 0.65)
+       
         self.delegate = self
         
         self.navigationItem.title = K.Titles.menu
-        ordersInProccessButton.isHidden = true
+        ordersInProcessButton.isHidden = true
         
         itemList = realm.objects(Item.self)
         
@@ -58,9 +65,9 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             }
         }
         
-        getOrdersInProccess()
+        getOrdersInProcess(ordersInProcessHub)
         
-        getNotifications()
+        getNotifications(notificationsHub)
         
     }
     
@@ -72,47 +79,8 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         navigationItem.hidesBackButton = false
     }
     
-    let badgeSize: CGFloat = 20
-    let badgeTag = 9830384
     
-    func badgeLabel(withCount count: Int) -> UILabel {
-        let badgeCount = UILabel(frame: CGRect(x: 0, y: 0, width: badgeSize, height: badgeSize))
-        badgeCount.translatesAutoresizingMaskIntoConstraints = false
-        badgeCount.tag = badgeTag
-        badgeCount.layer.cornerRadius = badgeCount.bounds.size.height / 2
-        badgeCount.textAlignment = .center
-        badgeCount.layer.masksToBounds = true
-        badgeCount.textColor = .white
-        badgeCount.font = badgeCount.font.withSize(12)
-        badgeCount.backgroundColor = .systemRed
-        badgeCount.text = String(count)
-        return badgeCount
-    }
-    
-    func showBadge(withCount count: Int, _ button: UIButton) {
-        let badge = badgeLabel(withCount: count)
-        button.addSubview(badge)
-        
-        NSLayoutConstraint.activate([
-            badge.leftAnchor.constraint(equalTo: button.leftAnchor, constant: 14),
-            badge.topAnchor.constraint(equalTo: button.topAnchor, constant: 4),
-            badge.widthAnchor.constraint(equalToConstant: badgeSize),
-            badge.heightAnchor.constraint(equalToConstant: badgeSize)
-        ])
-    }
-    
-    func removeBadge(_ button: UIButton) {
-        if let badge = button.viewWithTag(badgeTag) {
-            badge.removeFromSuperview()
-        }
-    }
-    
-    func getOrdersInProccess() {
-        NSLayoutConstraint.activate([
-            ordersInProccessButton.widthAnchor.constraint(equalToConstant: 34),
-            ordersInProccessButton.heightAnchor.constraint(equalToConstant: 44),
-        ])
-        
+    func getOrdersInProcess(_ hub: BadgeHub) {
         if let user = Auth.auth().currentUser?.phoneNumber {
             db.collection(K.Firebase.ordersCollection)
                 .whereField(K.Firebase.client, isEqualTo: user)
@@ -138,9 +106,10 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                             
                             DispatchQueue.main.async {
                                 if self.ordersList.count != 0 {
-                                    self.showBadge(withCount: self.ordersList.count, self.ordersInProccessButton)
+                                    hub.pop()
+                                    hub.setCount(self.ordersList.count)
                                 } else {
-                                    self.removeBadge(self.ordersInProccessButton)
+                                    hub.hide()
                                 }
                             }
                         }
@@ -170,12 +139,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         }
     }
     
-    func getNotifications() {
-        NSLayoutConstraint.activate([
-            notificationsButton.widthAnchor.constraint(equalToConstant: 34),
-            notificationsButton.heightAnchor.constraint(equalToConstant: 44),
-        ])
-        
+    func getNotifications(_ hub: BadgeHub) {
         getUserToken { userToken in
             self.db.collection(K.Firebase.notificationsCollection)
                 .addSnapshotListener { querySnapshot, error in
@@ -200,9 +164,10 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                             
                             DispatchQueue.main.async {
                                 if self.notifications.count != 0 {
-                                    self.showBadge(withCount: self.notifications.count, self.notificationsButton)
+                                    hub.pop()
+                                    hub.setCount(self.notifications.count)
                                 } else {
-                                    self.removeBadge(self.notificationsButton)
+                                    hub.hide()
                                 }
                             }
                         }
@@ -224,13 +189,13 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
             switch currentVC {
             case K.ViewControllers.menuViewController:
                 self.navigationItem.title = K.Titles.menu
-                ordersInProccessButton.isHidden = true
+                ordersInProcessButton.isHidden = true
             case K.ViewControllers.shoppingCarViewController:
                 self.navigationItem.title = K.Titles.shoppingCar
-                ordersInProccessButton.isHidden = false
+                ordersInProcessButton.isHidden = false
             case K.ViewControllers.moreViewController:
                 self.navigationItem.title = K.Titles.more
-                ordersInProccessButton.isHidden = true
+                ordersInProcessButton.isHidden = true
             default:
                 break;
             }
