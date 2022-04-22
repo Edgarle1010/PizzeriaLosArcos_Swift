@@ -99,11 +99,13 @@ extension OrdersInProcessViewController: UITableViewDelegate, UITableViewDataSou
         cell.priceLabel.text = "$\(currOrder.totalPrice)"
         
         let timeRequest = currOrder.dateRequest
+        let timeEstimatedDelivery = currOrder.dateEstimatedDelivery
         let timeProcessed = currOrder.dateProcessed ?? 0.0
         let timeFinished = currOrder.dateFinished ?? 0.0
         let timeDelivered = currOrder.dateDelivered ?? 0.0
         
         let dateRequest = Date(timeIntervalSince1970: timeRequest)
+        let dateEstimatedDelivery = Date(timeIntervalSince1970: timeEstimatedDelivery)
         let dateProcessed = Date(timeIntervalSince1970: timeProcessed)
         let dateFinished = Date(timeIntervalSince1970: timeFinished)
         let dateDelivered = Date(timeIntervalSince1970: timeDelivered)
@@ -134,7 +136,7 @@ extension OrdersInProcessViewController: UITableViewDelegate, UITableViewDataSou
         
         cell.progressView.progress = Float(currOrder.getStatus(currOrder.status))
         
-        cell.timeStimatedCompletion.text = "\(dateFormatter.string(from: dateRequest.addingTimeInterval(30 * 60)))"
+        cell.timeStimatedCompletion.text = "\(dateFormatter.string(from: dateEstimatedDelivery))"
     
         return cell
     }

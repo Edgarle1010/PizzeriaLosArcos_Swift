@@ -73,7 +73,10 @@ class ShoppingCarViewController: UIViewController {
                                                     let itemList = List<Item>()
                                                     itemList.append(objectsIn: self.realm.objects(Item.self))
                                                     
-                                                    let order = Order(folio: folio, client: user.phoneNumber!, clientName: user.displayName!, complete: false, status: "Pedido", dateRequest: Date().timeIntervalSince1970, dateProcessed: 0.0, dateFinished: 0.0, dateDelivered: 0.0, location: self.currUserLocation ?? "Ubicación no proporcionada", totalPrice: self.totalSum!, items: self.items!.count, itemList: itemList)
+                                                    let dateRequest = Date().timeIntervalSince1970
+                                                    let dateEstimatedDelivery = Date(timeIntervalSince1970: dateRequest).addingTimeInterval(Double(waitTime) * 60).timeIntervalSince1970
+                                                    
+                                                    let order = Order(folio: folio, client: user.phoneNumber!, clientName: user.displayName!, complete: false, status: "Pedido", dateRequest: dateRequest, dateEstimatedDelivery: dateEstimatedDelivery, dateProcessed: 0.0, dateFinished: 0.0, dateDelivered: 0.0, dateCanceled: 0.0, location: self.currUserLocation ?? "Ubicación no proporcionada", totalPrice: self.totalSum!, items: self.items!.count, itemList: itemList)
                                                     
                                                     self.addOrder(order, folio, waitTime)
                                                 }
