@@ -3123,7 +3123,7 @@
                                             <constraint firstAttribute="bottom" secondItem="ago-B0-bPm" secondAttribute="bottom" id="yx0-Vp-W5z"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Derechos de autor © 2021 Pizzería Los Arcos Todos los derechos reservados." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="OqJ-a9-Gfa">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Derechos de autor © 2021 Pizzería Los Arcos. Todos los derechos reservados." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="OqJ-a9-Gfa">
                                         <rect key="frame" x="15" y="300" width="384" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="FI4-yS-V7I"/>
