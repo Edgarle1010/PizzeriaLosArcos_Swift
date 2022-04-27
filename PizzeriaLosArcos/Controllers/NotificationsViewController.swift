@@ -105,6 +105,12 @@ class NotificationsViewController: UIViewController {
 extension NotificationsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if notifications.count == 0 {
+            tableView.setEmptyView(title: "No tienes notificaciones nuevas", message: "")
+        } else {
+            tableView.restore()
+        }
+        
         return notifications.count
     }
     

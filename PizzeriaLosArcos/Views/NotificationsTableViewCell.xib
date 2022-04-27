@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="380" height="126"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xx1-C4-zfi">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xx1-C4-zfi" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcos" customModuleProvider="target">
                         <rect key="frame" x="15" y="7.5" width="350" height="111"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0c7-Ey-bHy">
@@ -41,13 +41,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Fhl-rp-bYF">
                                         <rect key="frame" x="78" y="0.0" width="262" height="101"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tu pedido está listo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIO-NN-1d3">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tu pedido está listo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="MIO-NN-1d3">
                                                 <rect key="frame" x="0.0" y="0.0" width="167" height="30.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Por favor pasá a la sucursal del Goméz Morín a recoger tu pedido." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="045-Yu-p5G">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Por favor pasá a la sucursal del Goméz Morín a recoger tu pedido." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="045-Yu-p5G">
                                                 <rect key="frame" x="0.0" y="35.5" width="249" height="30"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <nil key="textColor"/>
@@ -70,7 +70,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" name="thirdColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="0c7-Ey-bHy" firstAttribute="top" secondItem="Xx1-C4-zfi" secondAttribute="top" constant="5" id="9tC-Ay-8uR"/>
                             <constraint firstAttribute="bottom" secondItem="0c7-Ey-bHy" secondAttribute="bottom" constant="5" id="Sno-4S-k0L"/>
@@ -79,6 +79,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" name="quarterColor"/>
                 <constraints>
                     <constraint firstItem="Xx1-C4-zfi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="D4a-mC-J8Y"/>
                     <constraint firstAttribute="trailing" secondItem="Xx1-C4-zfi" secondAttribute="trailing" constant="15" id="EqG-do-GDs"/>
@@ -102,8 +103,8 @@
         <namedColor name="primaryColor">
             <color red="0.76499998569488525" green="0.41600000858306885" blue="0.17599999904632568" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
-        <namedColor name="thirdColor">
-            <color red="0.9179999828338623" green="0.86299997568130493" blue="0.65100002288818359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="quarterColor">
+            <color red="0.9570000171661377" green="0.9570000171661377" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

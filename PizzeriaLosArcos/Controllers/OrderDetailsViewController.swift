@@ -98,10 +98,6 @@ class OrderDetailsViewController: UIViewController, UITextFieldDelegate, DataSen
             return
         }
         
-        totalView.dropShadow()
-        totalView.layer.cornerRadius = 12
-        totalView.layer.masksToBounds = true;
-        
         commentsTextView.dropShadow()
         commentsTextView.layer.cornerRadius = 12
         commentsTextView.layer.masksToBounds = true;

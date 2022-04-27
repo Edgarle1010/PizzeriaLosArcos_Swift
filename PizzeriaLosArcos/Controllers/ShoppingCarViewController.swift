@@ -36,10 +36,6 @@ class ShoppingCarViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         
-        totalView.dropShadow()
-        totalView.layer.cornerRadius = 12
-        totalView.layer.masksToBounds = true;
-        
         tableView.register(UINib(nibName: K.Collections.itemTableViewCell, bundle: nil), forCellReuseIdentifier: K.Collections.itemCell)
         
         tableView.rowHeight = UITableView.automaticDimension
@@ -226,6 +222,11 @@ class ShoppingCarViewController: UIViewController {
 extension ShoppingCarViewController: UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if items?.count == 0 {
+            tableView.setEmptyView(title: "No hay alimento agregado al carrito.", message: "Aquí se mostraron los alimentos que agregues para pedir.")
+        } else {
+            tableView.restore()
+        }
         return items?.count ?? 0
     }
     

@@ -1032,7 +1032,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="DRc-Fj-AxB">
                                                 <rect key="frame" x="15" y="0.0" width="384" height="48"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybS-wu-1pN" userLabel="totalView">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybS-wu-1pN" userLabel="totalView" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcos" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="128" height="48"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: $0.0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="hwF-7e-x1l">
@@ -1043,7 +1043,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="thirdColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="hwF-7e-x1l" firstAttribute="top" secondItem="ybS-wu-1pN" secondAttribute="top" constant="5" id="1De-ZF-O9f"/>
                                                             <constraint firstAttribute="bottom" secondItem="hwF-7e-x1l" secondAttribute="bottom" constant="5" id="8w0-SI-e5d"/>
@@ -1423,7 +1423,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1mL-RH-Xka">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="58a-cA-LMD">
                                     <size key="itemSize" width="0.0" height="0.0"/>
@@ -1441,7 +1441,7 @@
                         <viewLayoutGuide key="safeArea" id="7dT-7B-j1K"/>
                         <color key="backgroundColor" name="quarterColor"/>
                         <constraints>
-                            <constraint firstItem="7dT-7B-j1K" firstAttribute="bottom" secondItem="1mL-RH-Xka" secondAttribute="bottom" id="WTC-hq-IC5"/>
+                            <constraint firstAttribute="bottom" secondItem="1mL-RH-Xka" secondAttribute="bottom" id="WTC-hq-IC5"/>
                             <constraint firstItem="1mL-RH-Xka" firstAttribute="leading" secondItem="7dT-7B-j1K" secondAttribute="leading" id="Wht-2v-svB"/>
                             <constraint firstItem="7dT-7B-j1K" firstAttribute="trailing" secondItem="1mL-RH-Xka" secondAttribute="trailing" id="ehG-oi-Psx"/>
                             <constraint firstItem="1mL-RH-Xka" firstAttribute="top" secondItem="7dT-7B-j1K" secondAttribute="top" id="zet-vc-RPj"/>
@@ -1984,7 +1984,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="vL4-YU-EiY">
                                                 <rect key="frame" x="15" y="5" width="384" height="41.5"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BXF-eV-bg6" userLabel="totalView">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BXF-eV-bg6" userLabel="totalView" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcos" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="128" height="41.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: $0.0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="W7a-re-CG8">
@@ -1995,7 +1995,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="thirdColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="W7a-re-CG8" firstAttribute="top" secondItem="BXF-eV-bg6" secondAttribute="top" constant="5" id="1Ze-zh-rBq"/>
                                                             <constraint firstAttribute="bottom" secondItem="W7a-re-CG8" secondAttribute="bottom" constant="5" id="hew-TG-A4h"/>
