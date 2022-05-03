@@ -215,6 +215,10 @@ class OrderDetailsViewController: UIViewController, UITextFieldDelegate, DataSen
             }
         }
         
+        if let currDrink = currDrink {
+            price = Double(currDrink.getPrice(size))
+        }
+        
         extraIngredientCollectionView.reloadData()
         extraIngredientCollectionView.layoutIfNeeded()
         
@@ -538,6 +542,7 @@ class OrderDetailsViewController: UIViewController, UITextFieldDelegate, DataSen
                                 DispatchQueue.main.async {
                                     self.flavorsPickerView.reloadAllComponents()
                                     self.currDrink = self.drinkList[0]
+                                    self.refreshView(food)
                                 }
                             }
                         }

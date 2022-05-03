@@ -223,7 +223,7 @@ extension ShoppingCarViewController: UITableViewDelegate, UITableViewDataSource,
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if items?.count == 0 {
-            tableView.setEmptyView(title: "No hay alimento agregado al carrito.", message: "Aquí se mostraron los alimentos que agregues para pedir.")
+            tableView.setEmptyView(title: "No hay alimentos agregados al carrito.", message: "Aquí se mostrarán los alimentos que agregues al carrito.")
         } else {
             tableView.restore()
         }

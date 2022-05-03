@@ -88,7 +88,7 @@ extension OrdersInProcessViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if ordersList.count == 0 {
-            tableView.setEmptyView(title: "No tienes pedidos en proceso.", message: "Aquí se mostraran solo las ordenes que tengas en proceso.")
+            tableView.setEmptyView(title: "No tienes pedidos en proceso.", message: "Aquí se mostrarán solo las ordenes que tengas en proceso.")
         } else {
             tableView.restore()
         }
