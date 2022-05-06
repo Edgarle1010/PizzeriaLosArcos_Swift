@@ -98,7 +98,11 @@ extension FoodListViewController: UICollectionViewDelegate, UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Collections.foodCell, for: indexPath) as! FoodCollectionViewCell
         cell.titleLabel.text = foodList[indexPath.row].title
         if let description = foodList[indexPath.row].description {
-            cell.descriptionLabel.text = description
+            if !description.isEmpty {
+                cell.descriptionLabel.text = description
+            } else {
+                cell.descriptionLabel.isHidden = true
+            }
         } else {
             cell.descriptionLabel.isHidden = true
         }

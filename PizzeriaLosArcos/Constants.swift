@@ -68,6 +68,7 @@ struct K {
         static let KIDS_TITLE = "Kids"
 
         static let HOTDOG_ID = "burgerHotDog"
+        static let HOTDOG_TITLE = "HotDog"
         static let HOTDOG_FOOD_TYPE = "hotdog"
         static let FRENCH_FRIES_ID = "burgerPapasFrancesa"
         static let SPAGHETTI_ID = "platilloSpaghetti"

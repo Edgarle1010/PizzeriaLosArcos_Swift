@@ -191,9 +191,13 @@ class OrderDetailsViewController: UIViewController, UITextFieldDelegate, DataSen
             description = food.description
         }
         
-        if description != nil {
-            descriptionView.isHidden = false
-            descriptionLabel.text = description
+        if let description = description {
+            if !description.isEmpty {
+                descriptionView.isHidden = false
+                descriptionLabel.text = description
+            } else {
+                descriptionView.isHidden = true
+            }
         } else {
             descriptionView.isHidden = true
         }
@@ -435,11 +439,14 @@ class OrderDetailsViewController: UIViewController, UITextFieldDelegate, DataSen
             conditionView.isHidden = true
             sizeView.isHidden = true
             
-            if id.contains(K.Texts.ENCHILADAS_ID) {
+            if id.contains(K.Texts.HOTDOG_ID) {
+                foodType = K.Texts.HOTDOG_FOOD_TYPE
+            } else if id.contains(K.Texts.ENCHILADAS_ID) {
                 fillingView.isHidden = false
                 filling = hashButton.currentTitle
                 foodType = K.Texts.ENCHILADAS_FOOD_TYPE
             }
+            
         } else if id.contains(K.Texts.SEA_FOOD) {
             conditionView.isHidden = true
             if id.elementsEqual(K.Texts.SHRIMP_ID) {
