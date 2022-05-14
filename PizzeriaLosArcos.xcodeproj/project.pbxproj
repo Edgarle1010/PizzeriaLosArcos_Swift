@@ -31,6 +31,10 @@
 		B34A5D6B277D603F00EC8D3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B34A5D6A277D603F00EC8D3A /* Assets.xcassets */; };
 		B34A5D6E277D603F00EC8D3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B34A5D6C277D603F00EC8D3A /* LaunchScreen.storyboard */; };
 		B34A5D79277D623000EC8D3A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B34A5D78277D623000EC8D3A /* GoogleService-Info.plist */; };
+		B3592444282F598A006419BC /* OrdersHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3592443282F598A006419BC /* OrdersHistoryViewController.swift */; };
+		B3592447282F5C7D006419BC /* OrderHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3592445282F5C7D006419BC /* OrderHistoryTableViewCell.swift */; };
+		B3592448282F5C7D006419BC /* OrderHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3592446282F5C7D006419BC /* OrderHistoryTableViewCell.xib */; };
+		B359244A282F6D71006419BC /* OrderDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3592449282F6D71006419BC /* OrderDataViewController.swift */; };
 		B35BC1B527ED858C00E4B766 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BC1B427ED858C00E4B766 /* PushNotificationManager.swift */; };
 		B369792C27E83F3800E09B80 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = B369792B27E83F3800E09B80 /* Reachability.swift */; };
 		B381E02C27EEB9E200C7B4B0 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B381E02B27EEB9E200C7B4B0 /* NotificationsViewController.swift */; };
@@ -92,6 +96,10 @@
 		B34A5D6D277D603F00EC8D3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B34A5D6F277D603F00EC8D3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B34A5D78277D623000EC8D3A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B3592443282F598A006419BC /* OrdersHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersHistoryViewController.swift; sourceTree = "<group>"; };
+		B3592445282F5C7D006419BC /* OrderHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderHistoryTableViewCell.swift; sourceTree = "<group>"; };
+		B3592446282F5C7D006419BC /* OrderHistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderHistoryTableViewCell.xib; sourceTree = "<group>"; };
+		B3592449282F6D71006419BC /* OrderDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDataViewController.swift; sourceTree = "<group>"; };
 		B35BC1B427ED858C00E4B766 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		B369792B27E83F3800E09B80 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		B381E02B27EEB9E200C7B4B0 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +220,8 @@
 				B3DD370C27E97D8F00AF4615 /* OrderTableViewCell.xib */,
 				B381E02D27EEBC0300C7B4B0 /* NotificationsTableViewCell.swift */,
 				B381E02E27EEBC0300C7B4B0 /* NotificationsTableViewCell.xib */,
+				B3592445282F5C7D006419BC /* OrderHistoryTableViewCell.swift */,
+				B3592446282F5C7D006419BC /* OrderHistoryTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -243,6 +253,8 @@
 				B3C960E827C607BA0005EE23 /* AboutViewController.swift */,
 				B3DD370927E97C3000AF4615 /* OrdersInProcessViewController.swift */,
 				B381E02B27EEB9E200C7B4B0 /* NotificationsViewController.swift */,
+				B3592443282F598A006419BC /* OrdersHistoryViewController.swift */,
+				B3592449282F6D71006419BC /* OrderDataViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -318,6 +330,7 @@
 				B3B82F0E2797D7DE00B04C20 /* ExtraIngredientCollectionViewCell.xib in Resources */,
 				B34A5D6E277D603F00EC8D3A /* LaunchScreen.storyboard in Resources */,
 				B381E03027EEBC0300C7B4B0 /* NotificationsTableViewCell.xib in Resources */,
+				B3592448282F5C7D006419BC /* OrderHistoryTableViewCell.xib in Resources */,
 				B34A5D79277D623000EC8D3A /* GoogleService-Info.plist in Resources */,
 				B34A5D6B277D603F00EC8D3A /* Assets.xcassets in Resources */,
 				B302D60C278EAC72002EAEA2 /* FoodCollectionViewCell.xib in Resources */,
@@ -390,12 +403,15 @@
 				B31D76D2278BE981001EEC92 /* TabBarController.swift in Sources */,
 				B3F05EB027B77F0800DE59A3 /* UserInformationViewController.swift in Sources */,
 				B3DD370D27E97D8F00AF4615 /* OrderTableViewCell.swift in Sources */,
+				B3592447282F5C7D006419BC /* OrderHistoryTableViewCell.swift in Sources */,
 				B34A5D66277D603D00EC8D3A /* WelcomeViewController.swift in Sources */,
 				B31D76D0278BE76E001EEC92 /* AppManager.swift in Sources */,
+				B359244A282F6D71006419BC /* OrderDataViewController.swift in Sources */,
 				B3B82F0A2797CA4E00B04C20 /* AmountViewController.swift in Sources */,
 				B369792C27E83F3800E09B80 /* Reachability.swift in Sources */,
 				B35BC1B527ED858C00E4B766 /* PushNotificationManager.swift in Sources */,
 				B34A5D62277D603D00EC8D3A /* AppDelegate.swift in Sources */,
+				B3592444282F598A006419BC /* OrdersHistoryViewController.swift in Sources */,
 				B3B82F0D2797D7DE00B04C20 /* ExtraIngredientCollectionViewCell.swift in Sources */,
 				B31AC923279287E700A0200B /* OrderDetailsViewController.swift in Sources */,
 				B3B82F122797E95D00B04C20 /* CollectionViewFlowLayout.swift in Sources */,

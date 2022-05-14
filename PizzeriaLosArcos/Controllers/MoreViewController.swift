@@ -54,7 +54,7 @@ class MoreViewController: UIViewController, MFMailComposeViewControllerDelegate 
             }
         case 1:
             historyView.showAnimation {
-                //
+                self.performSegue(withIdentifier: K.Segues.moreToOrdersHistory, sender: self)
             }
         case 2:
             howGetStackView.showAnimation {

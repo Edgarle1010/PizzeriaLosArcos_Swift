@@ -177,6 +177,8 @@ struct K {
         static let moreToAbout = "MoreToAbout"
         static let userInformationToEditUserName = "UserInformationToEditUserName"
         static let userInformationToChangePassword = "UserInformationToChangePassword"
+        static let moreToOrdersHistory = "MoreToOrdersHistory"
+        static let ordersHistoryToOrderData = "OrdersHistoryToOrderData"
     }
     
     struct ViewControllers {
@@ -202,5 +204,7 @@ struct K {
         static let orderCell = "orderCell"
         static let notificationTableViewCell = "NotificationsTableViewCell"
         static let notificationCell = "notificationCell"
+        static let ordersHistoryTableViewCell = "OrderHistoryTableViewCell"
+        static let ordersHistoryCell = "ordersHistoryCell"
     }
 }
