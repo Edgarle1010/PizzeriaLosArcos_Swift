@@ -57,7 +57,15 @@ class OrdersInProcessViewController: UIViewController {
                             }
                             
                             DispatchQueue.main.async {
-                                self.tableView.reloadData()
+                                if self.ordersList.count == 0 {
+                                    self.tableView.setEmptyView(title: "No tienes pedidos en proceso.", message: "Aquí se mostrarán solo las ordenes que tengas en proceso.")
+                                } else {
+                                    self.tableView.restore()
+                                }
+                                
+                                UIView.transition(with: self.tableView, duration: 0.6, options: .transitionCrossDissolve, animations: {
+                                    self.tableView.reloadData()
+                                }, completion: nil)
                             }
                         }
                     }
@@ -87,12 +95,6 @@ class OrdersInProcessViewController: UIViewController {
 extension OrdersInProcessViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if ordersList.count == 0 {
-            tableView.setEmptyView(title: "No tienes pedidos en proceso.", message: "Aquí se mostrarán solo las ordenes que tengas en proceso.")
-        } else {
-            tableView.restore()
-        }
-        
         return ordersList.count 
     }
     

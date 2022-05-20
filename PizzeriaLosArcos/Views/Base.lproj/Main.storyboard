@@ -3415,6 +3415,7 @@
                                         <connections>
                                             <action selector="backPressed:" destination="9bG-3O-HhM" eventType="touchUpInside" id="4ie-l9-XBK"/>
                                             <action selector="backPressed:" destination="JGw-ue-bFs" eventType="touchUpInside" id="F7c-Qf-yCA"/>
+                                            <action selector="backPressed:" destination="JPb-Nn-1VE" eventType="touchUpInside" id="KkD-s2-icZ"/>
                                             <action selector="backPressed:" destination="1N1-E8-qx4" eventType="touchUpInside" id="VMV-6H-vCT"/>
                                         </connections>
                                     </button>
@@ -3451,7 +3452,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="oar-yd-Ded">
                                                         <rect key="frame" x="0.0" y="0.0" width="404" height="137"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hbq-FC-BTR" userLabel="statusView" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hbq-FC-BTR" userLabel="statusView" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcos" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="404" height="23.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha del pedido: 17 de enero" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="tlC-0r-6El">
@@ -3541,7 +3542,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="A0u-9X-fze">
                                                         <rect key="frame" x="0.0" y="147" width="404" height="30"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehp-a7-pSe" userLabel="statusView" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehp-a7-pSe" userLabel="statusView" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcos" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="En proceso" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="5cP-Ay-F9k">
@@ -3557,7 +3558,7 @@
                                                                     <constraint firstItem="5cP-Ay-F9k" firstAttribute="centerY" secondItem="ehp-a7-pSe" secondAttribute="centerY" id="QHn-mA-zmq"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QY5-3J-o1p" userLabel="totalView" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QY5-3J-o1p" userLabel="totalView" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcos" customModuleProvider="target">
                                                                 <rect key="frame" x="217" y="0.0" width="187" height="30"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: $0.0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="AS6-Lg-qLf">
@@ -3592,6 +3593,10 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="O5g-53-EoT">
                                         <rect key="frame" x="0.0" y="192" width="414" height="556"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="JPb-Nn-1VE" id="5W7-RW-LpJ"/>
+                                            <outlet property="delegate" destination="JPb-Nn-1VE" id="W3W-gC-oij"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <constraints>
@@ -3611,6 +3616,19 @@
                             <constraint firstItem="0Hg-8f-yK0" firstAttribute="leading" secondItem="tTi-UY-zTI" secondAttribute="leading" id="uCL-Bj-AFp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="BoG-fy-KLH" id="dZd-V4-4OD"/>
+                        <outlet property="dateDeliveredLabel" destination="sCl-7P-tXY" id="RDO-6h-6oj"/>
+                        <outlet property="dateFinishedLabel" destination="PDT-8F-zfm" id="cqi-L9-ZRA"/>
+                        <outlet property="dateLabel" destination="tlC-0r-6El" id="H4t-RN-Boz"/>
+                        <outlet property="dateProcessedLabel" destination="7LA-cH-FYI" id="m08-OR-Isd"/>
+                        <outlet property="dateRequestLabel" destination="Mrl-SK-qQi" id="N6m-Iu-0x1"/>
+                        <outlet property="folioLabel" destination="h4A-mn-h6z" id="VJ2-KA-fhY"/>
+                        <outlet property="statusLabel" destination="5cP-Ay-F9k" id="zct-jU-8jd"/>
+                        <outlet property="tableView" destination="O5g-53-EoT" id="eba-cP-fC9"/>
+                        <outlet property="titleDateCanceledLabel" destination="rH6-52-N5Y" id="33l-rJ-BqC"/>
+                        <outlet property="totalLabel" destination="AS6-Lg-qLf" id="LbS-Jw-Te8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="udS-kf-Scg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

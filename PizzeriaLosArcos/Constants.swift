@@ -144,10 +144,18 @@ struct K {
         static let status = "status"
         
         static let ordersCollection = "orders"
+        static let folio = "folio"
         static let client = "client"
+        static let state = "status"
+        static let complete = "complete"
+        static let dateProcessed = "dateProcessed"
+        static let dateFinished = "dateFinished"
+        static let dateDelivered = "dateDelivered"
+        static let dateCanceled = "dateCanceled"
         
         static let notificationsCollection = "notifications"
         static let userToken = "userToken"
+        static let viewed = "viewed"
         
     }
     

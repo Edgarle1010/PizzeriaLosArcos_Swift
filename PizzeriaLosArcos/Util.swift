@@ -220,4 +220,15 @@ extension UITableView {
     }
 }
 
+extension UIView {
+    
+    func applyShadow(cornerRadius: CGFloat) {
+        layer.cornerRadius = cornerRadius
+        layer.masksToBounds = false
+        layer.shadowRadius = 3
+        layer.shadowOpacity = 0.2
+        layer.shadowColor = UIColor.gray.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 1)
+    }
+}
 

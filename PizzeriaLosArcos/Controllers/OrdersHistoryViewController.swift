@@ -130,7 +130,7 @@ class OrdersHistoryViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segues.ordersHistoryToOrderData {
             let destinationVC = segue.destination as! OrderDataViewController
-            //destinationVC.order = order
+            destinationVC.order = order
         }
     }
 
@@ -141,7 +141,7 @@ class OrdersHistoryViewController: UIViewController {
 extension OrdersHistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if orderList.count == 0 {
-            tableView.setEmptyView(title: "No hay ningún pedido", message: "Aquí se mostraron los pedidos que hagas.")
+            tableView.setEmptyView(title: "No hay ningún pedido", message: "Aquí se mostraran los pedidos que hagas.")
         } else {
             tableView.restore()
         }

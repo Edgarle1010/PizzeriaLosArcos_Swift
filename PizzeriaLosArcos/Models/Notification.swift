@@ -18,8 +18,9 @@ public class Notification: Codable {
     var options: String?
     var userToken: String
     var viewed: Bool
+    var dateSend: Double
     
-    init(folio: String?, imageURL: String?, title: String, description: String?, options: String?, userToken: String, viewed: Bool) {
+    init(folio: String?, imageURL: String?, title: String, description: String?, options: String?, userToken: String, viewed: Bool, dateSend: Double) {
         self.folio = folio
         self.imageURL = imageURL
         self.title = title
@@ -27,6 +28,7 @@ public class Notification: Codable {
         self.options = options
         self.userToken = userToken
         self.viewed = viewed
+        self.dateSend = dateSend
     }
     
     enum CodingKeys: String, CodingKey {
@@ -37,6 +39,7 @@ public class Notification: Codable {
         case options
         case userToken
         case viewed
+        case dateSend
     }
     
     public required init(from decoder: Decoder) throws {
@@ -49,6 +52,7 @@ public class Notification: Codable {
         options = try values.decodeIfPresent(String.self, forKey: .options)
         userToken = try values.decodeIfPresent(String.self, forKey: .userToken)!
         viewed = try values.decodeIfPresent(Bool.self, forKey: .viewed)!
+        dateSend = try values.decodeIfPresent(Double.self, forKey: .dateSend)!
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -61,5 +65,6 @@ public class Notification: Codable {
         try container.encodeIfPresent(options, forKey: .options)
         try container.encodeIfPresent(userToken, forKey: .userToken)
         try container.encodeIfPresent(viewed, forKey: .viewed)
+        try container.encodeIfPresent(dateSend, forKey: .dateSend)
     }
 }

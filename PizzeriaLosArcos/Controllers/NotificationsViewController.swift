@@ -28,12 +28,10 @@ class NotificationsViewController: UIViewController {
         
         tableView.register(UINib(nibName: K.Collections.notificationTableViewCell, bundle: nil), forCellReuseIdentifier: K.Collections.notificationCell)
         
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.allowsSelection = false
-        
         getUserToken { userToken in
             ProgressHUD.show()
             self.db.collection(K.Firebase.notificationsCollection)
+                .whereField(K.Firebase.userToken, isEqualTo: userToken)
                 .addSnapshotListener { querySnapshot, error in
                     ProgressHUD.dismiss()
                     self.notifications = []
@@ -47,16 +45,22 @@ class NotificationsViewController: UIViewController {
                                 }
                                 switch result {
                                 case .success(let notification):
-                                    if !notification.viewed && notification.userToken.elementsEqual(userToken) {
-                                        self.notifications.append(notification)
-                                    }
+                                    self.notifications.append(notification)
                                 case .failure(let error):
                                     print("Error decoding food: \(error)")
                                 }
                             }
                             
                             DispatchQueue.main.async {
-                                self.tableView.reloadData()
+                                if self.notifications.count == 0 {
+                                    self.tableView.setEmptyView(title: "No tienes notificaciones nuevas", message: "")
+                                } else {
+                                    self.tableView.restore()
+                                }
+                                
+                                UIView.transition(with: self.tableView, duration: 0.6, options: .transitionCrossDissolve, animations: {
+                                    self.tableView.reloadData()
+                                }, completion: nil)
                             }
                         }
                     }
@@ -105,12 +109,6 @@ class NotificationsViewController: UIViewController {
 extension NotificationsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if notifications.count == 0 {
-            tableView.setEmptyView(title: "No tienes notificaciones nuevas", message: "")
-        } else {
-            tableView.restore()
-        }
-        
         return notifications.count
     }
     
@@ -122,9 +120,19 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
         cell.folioLabel.text = currNotification.folio
         cell.titleLabel.text = currNotification.title
         cell.descriptionLabel.text = currNotification.description
-        cell.optionsLabel.text = currNotification.options
+        cell.optionsLabel.text = "\(currNotification.dateSend)"
+        
+        if currNotification.viewed {
+            cell.notificationView.isHidden = true
+        } else {
+            cell.notificationView.isHidden = false
+        }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
     
     
