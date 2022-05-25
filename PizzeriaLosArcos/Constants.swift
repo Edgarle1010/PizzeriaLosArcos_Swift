@@ -119,6 +119,7 @@ struct K {
         static let add = "add"
         static let delete = "delete"
         static let back = "back"
+        static let markRead = "mark_read"
     }
     
     struct Firebase {
@@ -156,6 +157,7 @@ struct K {
         static let notificationsCollection = "notifications"
         static let userToken = "userToken"
         static let viewed = "viewed"
+        static let dateSend = "dateSend"
         
     }
     

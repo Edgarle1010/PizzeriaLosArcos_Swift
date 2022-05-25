@@ -83,6 +83,7 @@ class OrdersHistoryViewController: UIViewController {
                             }
                             
                             DispatchQueue.main.async {
+                                self.orderList = self.orderList.sorted(by: { $0.dateRequest > $1.dateRequest })
                                 self.tableView.reloadData()
                             }
                         }
