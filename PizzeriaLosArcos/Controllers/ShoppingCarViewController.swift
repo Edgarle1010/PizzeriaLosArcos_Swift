@@ -163,13 +163,30 @@ class ShoppingCarViewController: UIViewController {
     
     func getOrderID(completion: @escaping (String) -> Void) {
         ProgressHUD.show()
-        db.collection(K.Firebase.ordersCollection).getDocuments { querySnapshot, error in
+        db.collection(K.Firebase.ordersCollection)
+            .order(by: K.Firebase.dateRequest)
+            .getDocuments { querySnapshot, error in
             ProgressHUD.dismiss()
             if let error = error {
                 self.alert(title: "¡Ha ocurrido un problema!", message: error.localizedDescription)
             } else {
-                if let documents = querySnapshot {                    
-                    completion("F\(documents.count + 1)")
+                if let documents = querySnapshot?.documents {
+                    var folio = "F"
+                    var go = true
+                    
+                    for (index, doc) in documents.enumerated() {
+                        if go {
+                            folio = ("F\(index)")
+                            if !folio.elementsEqual(doc.documentID) {
+                                completion(folio)
+                                go = false
+                            }
+                        }
+                    }
+                    
+                    if go {
+                        completion("F\(documents.count)")
+                    }
                 }
             }
         }

@@ -12,6 +12,7 @@ target 'PizzeriaLosArcos' do
   pod 'Firebase/Messaging'
   pod 'FirebaseFirestoreSwift', '> 7.0-beta'
   pod 'BadgeHub'
+  pod 'FirebaseAppCheck'
   
   pod 'IQKeyboardManagerSwift', :inhibit_warnings => true
   pod 'ProgressHUD'

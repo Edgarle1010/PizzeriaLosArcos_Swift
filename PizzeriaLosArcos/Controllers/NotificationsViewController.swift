@@ -66,12 +66,15 @@ class NotificationsViewController: UIViewController {
     }
     
     func getNotifications(_ userToken: String) {
+        guard let phoneNumber = Auth.auth().currentUser?.phoneNumber else {
+            return
+        }
         ProgressHUD.show()
         listener = self.db.collection(K.Firebase.notificationsCollection)
-            .whereField(K.Firebase.userToken, isEqualTo: userToken)
+            .whereField(K.Firebase.phoneNumber, isEqualTo: phoneNumber)
             .addSnapshotListener { querySnapshot, error in
                 ProgressHUD.dismiss()
-                self.notifications.removeAll()
+                self.notifications = []
                 if let error = error {
                     self.alert(title: "¡Ha ocurrido un problema!", message: error.localizedDescription)
                 } else {
@@ -89,10 +92,8 @@ class NotificationsViewController: UIViewController {
                         }
                         
                         DispatchQueue.main.async {
-                            UIView.transition(with: self.tableView, duration: 1.0, options: .transitionCrossDissolve, animations: {
-                                self.notifications = self.notifications.sorted(by: { $0.dateSend > $1.dateSend })
-                                self.tableView.reloadData()
-                            }, completion: nil)
+                            self.notifications = self.notifications.sorted(by: { $0.dateSend > $1.dateSend })
+                            UIView.transition(with: self.tableView, duration: 0.6, options: .transitionCrossDissolve, animations: { self.tableView.reloadData() }, completion: nil)
                         }
                     }
                 }
@@ -111,16 +112,7 @@ class NotificationsViewController: UIViewController {
                     if let documents = document?.documents {
                         for doc in documents {
                             ProgressHUD.show()
-                            self.db.collection(K.Firebase.notificationsCollection).document(doc.documentID).updateData([
-                                K.Firebase.viewed: true,
-                            ]) { err in
-                                ProgressHUD.dismiss()
-                                if let err = err {
-                                    self.alert(title: K.Texts.problemOcurred, message: err.localizedDescription)
-                                } else {
-                                    print("Document successfully updated")
-                                }
-                            }
+                            self.db.collection(K.Firebase.notificationsCollection).document(doc.documentID).updateData([K.Firebase.viewed: true])
                         }
                     }
                 }
@@ -139,23 +131,7 @@ class NotificationsViewController: UIViewController {
                     if let documents = document?.documents {
                         for doc in documents {
                             ProgressHUD.show()
-                            self.db.collection(K.Firebase.notificationsCollection).document(doc.documentID).delete() { err in
-                                if let err = err {
-                                    print("Error removing document: \(err)")
-                                } else {
-//                                    DispatchQueue.main.async {
-//                                        if self.notifications.count == 0 {
-//                                            self.tableView.setEmptyView(title: "No tienes notificaciones nuevas", message: "")
-//                                        } else {
-//                                            self.tableView.restore()
-//                                        }
-//
-//                                        UIView.transition(with: self.tableView, duration: 0.6, options: .transitionCrossDissolve, animations: {
-//                                            self.tableView.reloadData()
-//                                        }, completion: nil)
-//                                    }
-                                }
-                            }
+                            self.db.collection(K.Firebase.notificationsCollection).document(doc.documentID).delete()
                         }
                     }
                 }
@@ -181,7 +157,6 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
         } else {
             self.tableView.restore()
         }
-        
         return notifications.count
     }
     
@@ -219,50 +194,58 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         let index = indexPath.row
         let currNotification = notifications[index]
-        
+
         let identifier = "\(index)" as NSString
-        
-        return UIContextMenuConfiguration(
-            identifier: identifier,
-            previewProvider: nil) { _ in
-                
-                let markAsRead = UIAction(title: "Marcar notificación como leída",
-                                          image: UIImage(named: K.Images.markRead),
-                                          identifier: nil
-                ) { _ in
+
+        return UIContextMenuConfiguration(identifier: identifier,
+                                          previewProvider: nil,
+                                          actionProvider: { suggestedActions in
+            let markAsRead = UIAction(title: "Marcar notificación como leída",
+                                      image: UIImage(named: K.Images.markRead),
+                                      identifier: nil
+            ) { _ in
+                let seconds = 1.0
+                ProgressHUD.show()
+                DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                    ProgressHUD.dismiss()
                     self.markReadNotification(currNotification)
                 }
-                
-                let origImage = UIImage(named: "delete")
-                let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-                
-                let delete = UIAction(title: "Borrar notificación",
-                                      image: tintedImage,
-                                      identifier: nil,
-                                      attributes: .destructive
-                ) { _ in
+            }
+            
+            let origImage = UIImage(named: "delete")
+            let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
+            
+            let delete = UIAction(title: "Borrar notificación",
+                                  image: tintedImage,
+                                  identifier: nil,
+                                  attributes: .destructive
+            ) { _ in
+                let seconds = 1.0
+                ProgressHUD.show()
+                DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                    ProgressHUD.dismiss()
                     self.removeNotification(currNotification)
                 }
-                
-                if currNotification.viewed {
-                    return UIMenu(title: "", image: nil, children: [delete])
-                } else {
-                    return UIMenu(title: "", image: nil, children: [markAsRead, delete])
-                }
             }
+            
+            if currNotification.viewed {
+                return UIMenu(title: "", image: nil, children: [delete])
+            } else {
+                return UIMenu(title: "", image: nil, children: [markAsRead, delete])
+            }
+        })
     }
-    
+
     func tableView(_ tableView: UITableView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
         guard
             let identifier = configuration.identifier as? String,
             let index = Int(identifier),
-            
                 let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0))
                 as? NotificationsTableViewCell
         else {
             return nil
         }
-        
+
         return UITargetedPreview(view: cell.viewCell)
     }
 }

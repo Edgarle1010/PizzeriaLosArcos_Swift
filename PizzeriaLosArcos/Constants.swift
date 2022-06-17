@@ -149,13 +149,14 @@ struct K {
         static let client = "client"
         static let state = "status"
         static let complete = "complete"
+        static let dateRequest = "dateRequest"
         static let dateProcessed = "dateProcessed"
         static let dateFinished = "dateFinished"
         static let dateDelivered = "dateDelivered"
         static let dateCanceled = "dateCanceled"
         
         static let notificationsCollection = "notifications"
-        static let userToken = "userToken"
+        static let phoneNumber = "phoneNumber"
         static let viewed = "viewed"
         static let dateSend = "dateSend"
         

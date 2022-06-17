@@ -16,17 +16,17 @@ public class Notification: Codable {
     var title: String
     var description: String?
     var options: String?
-    var userToken: String
+    var phoneNumber: String
     var viewed: Bool
     var dateSend: Double
     
-    init(folio: String?, imageURL: String?, title: String, description: String?, options: String?, userToken: String, viewed: Bool, dateSend: Double) {
+    init(folio: String?, imageURL: String?, title: String, description: String?, options: String?, phoneNumber: String, viewed: Bool, dateSend: Double) {
         self.folio = folio
         self.imageURL = imageURL
         self.title = title
         self.description = description
         self.options = options
-        self.userToken = userToken
+        self.phoneNumber = phoneNumber
         self.viewed = viewed
         self.dateSend = dateSend
     }
@@ -37,7 +37,7 @@ public class Notification: Codable {
         case title
         case description
         case options
-        case userToken
+        case phoneNumber
         case viewed
         case dateSend
     }
@@ -50,7 +50,7 @@ public class Notification: Codable {
         title = try values.decodeIfPresent(String.self, forKey: .title)!
         description = try values.decodeIfPresent(String.self, forKey: .description)
         options = try values.decodeIfPresent(String.self, forKey: .options)
-        userToken = try values.decodeIfPresent(String.self, forKey: .userToken)!
+        phoneNumber = try values.decodeIfPresent(String.self, forKey: .phoneNumber)!
         viewed = try values.decodeIfPresent(Bool.self, forKey: .viewed)!
         dateSend = try values.decodeIfPresent(Double.self, forKey: .dateSend)!
     }
@@ -63,7 +63,7 @@ public class Notification: Codable {
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(options, forKey: .options)
-        try container.encodeIfPresent(userToken, forKey: .userToken)
+        try container.encodeIfPresent(phoneNumber, forKey: .phoneNumber)
         try container.encodeIfPresent(viewed, forKey: .viewed)
         try container.encodeIfPresent(dateSend, forKey: .dateSend)
     }

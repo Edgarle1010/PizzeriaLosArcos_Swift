@@ -140,8 +140,12 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func getNotifications(_ hub: BadgeHub) {
+        guard let phoneNumber = Auth.auth().currentUser?.phoneNumber else {
+            return
+        }
         getUserToken { userToken in
             self.db.collection(K.Firebase.notificationsCollection)
+                .whereField("phoneNumber", isEqualTo: phoneNumber)
                 .addSnapshotListener { querySnapshot, error in
                     self.notifications = []
                     if let error = error {
@@ -154,7 +158,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                                 }
                                 switch result {
                                 case .success(let notification):
-                                    if !notification.viewed && notification.userToken.elementsEqual(userToken) {
+                                    if !notification.viewed {
                                         self.notifications.append(notification)
                                     }
                                 case .failure(let error):

@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="417" height="103"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8QG-Yj-0ou" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcosAdmin" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8QG-Yj-0ou" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcos" customModuleProvider="target">
                         <rect key="frame" x="15" y="7.5" width="387" height="88"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9JA-y0-d7x">
