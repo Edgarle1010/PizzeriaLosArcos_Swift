@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="496" height="142"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vip-Jj-MVA" customClass="RoundShadowViewSecond" customModule="PizzeriaLosArcos" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vip-Jj-MVA">
                         <rect key="frame" x="15" y="7.5" width="466" height="127"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9kW-QV-9e4">
@@ -100,7 +100,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="thirdColor"/>
                         <constraints>
                             <constraint firstItem="9kW-QV-9e4" firstAttribute="top" secondItem="Vip-Jj-MVA" secondAttribute="top" constant="10" id="XkD-47-WnO"/>
                             <constraint firstAttribute="bottom" secondItem="9kW-QV-9e4" secondAttribute="bottom" constant="10" id="hrO-bq-jjO"/>
@@ -137,6 +137,9 @@
         </namedColor>
         <namedColor name="quarterColor">
             <color red="0.9570000171661377" green="0.9570000171661377" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="thirdColor">
+            <color red="0.9179999828338623" green="0.86299997568130493" blue="0.65100002288818359" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

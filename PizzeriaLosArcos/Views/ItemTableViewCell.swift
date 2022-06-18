@@ -20,6 +20,8 @@ class ItemTableViewCell: SwipeTableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
+        viewCell.applyShadow(cornerRadius: 12)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
