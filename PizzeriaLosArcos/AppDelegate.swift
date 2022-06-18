@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseMessaging
+import FirebaseAppCheck
 import IQKeyboardManagerSwift
 import RealmSwift
 
@@ -16,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var orientationLock = UIInterfaceOrientationMask.portrait
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        AppCheck.setAppCheckProviderFactory(MyAppCheckProviderFactory())
         
         FirebaseApp.configure()
         
@@ -33,6 +36,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        
+        let userDefaults = UserDefaults.standard
+        if userDefaults.value(forKey: "appFirstTimeOpend") == nil {
+            userDefaults.setValue(true, forKey: "appFirstTimeOpend")
+            do {
+                try Auth.auth().signOut()
+            }catch {
+
+            }
+        } else {
+           
+        }
         
         return true
     }

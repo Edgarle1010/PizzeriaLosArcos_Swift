@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import ProgressHUD
 
 class WelcomeViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
@@ -26,7 +28,14 @@ class WelcomeViewController: UIViewController {
         self.navigationController?.navigationBar.scrollEdgeAppearance = standardAppearance
         
         AppManager.shared.appContainer = self
-        AppManager.shared.showApp()
+        if Auth.auth().currentUser != nil {
+            let seconds = 0.5
+            ProgressHUD.show("Iniciando sesión")
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                ProgressHUD.dismiss()
+                AppManager.shared.showApp()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 import ProgressHUD
  
 class AppManager {
@@ -18,12 +17,8 @@ class AppManager {
     
     func showApp() {
         var viewController: UIViewController
-        if Auth.auth().currentUser != nil {
-            ProgressHUD.show()
-            viewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
-            appContainer.navigationController?.pushViewController(viewController, animated: true)
-            ProgressHUD.dismiss()
-        } 
+        viewController = storyboard.instantiateViewController(withIdentifier: "TabBarController")
+        appContainer.navigationController?.pushViewController(viewController, animated: false)
     }
 }
 
