@@ -1,0 +1,21 @@
+name: Backup Firestore
+
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+
+env:
+  PROJECT_ID: YOUR-PROJECT
+  BUCKET: gs://YOUR-BUCKET
+  
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        export_default_credentials: true
+    - run: gcloud info
+    - run: gcloud config set project pizzerialosarcos-9c55f
+    - run: gcloud firestore export 105557349099131190648
